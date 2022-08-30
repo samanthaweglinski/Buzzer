@@ -1,6 +1,6 @@
 # Buzzer
 
-- Project description (this can be a few sentences explaining what the app is)
+- Project description
 - Heroku Live Link
 - Technologies Used
 - MVP features
