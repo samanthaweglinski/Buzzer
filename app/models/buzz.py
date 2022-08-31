@@ -10,6 +10,7 @@ class Buzz(db.Model):
     image_url = db.Column(db.String(255))
 
     user = db.relationship('User', back_populates='buzzes')
+    comments = db.relationship('Comment', back_populates='buzzes')
 
     def to_dict(self):
         return {

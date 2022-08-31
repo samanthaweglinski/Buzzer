@@ -10,7 +10,7 @@ class Comment(db.Model):
     buzz_id = db.Column(db.Integer, db.ForeignKey('buzzes.id'), nullable=False)
 
     user = db.relationship('User', back_populates='comments')
-    buzz = db.relationship('Buzz', back_populates='comments')
+    buzzes = db.relationship('Buzz', back_populates='comments')
 
     def to_dict(self):
         return {
