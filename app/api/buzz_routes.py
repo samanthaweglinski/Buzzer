@@ -1,7 +1,7 @@
-from flask import Blueprint, request, redirect, jsonify
+from flask import Blueprint, request, jsonify
 from app.models import db, Buzz
 from app.forms import buzz_form
-from flask_login import current_user, login_required
+from flask_login import login_required
 from .auth_routes import validation_errors_to_error_messages
 
 buzz_routes = Blueprint("buzzes", __name__)
@@ -10,24 +10,21 @@ buzz_routes = Blueprint("buzzes", __name__)
 # get all buzzes
 @buzz_routes.route("", methods=["GET"])
 @buzz_routes.route("/", methods=["GET"])
-# @login_required
+@login_required
 def all_buzzes():
     buzzes = [buzz.to_dict() for buzz in Buzz.query.all()] # list comprehension
-    # res = {"buzzes": buzzes}
-    # return res
     return jsonify(buzzes)
 
 
 # get a buzz by id
 @buzz_routes.route("/<buzz_id>", methods=["GET"])
-# @login_required
+@login_required
 def one_buzz(buzz_id):
   buzz = Buzz.query.get(buzz_id)
 
   if not buzz:
     return "404: This buzz does not exist."
 
-  # return buzz.to_dict()
   return jsonify(buzz.to_dict())
 
 
@@ -59,7 +56,7 @@ def create_buzz():
 
 # update a buzz (edit)
 @buzz_routes.route("/<buzz_id>", methods=["PUT"])
-# @login_required
+@login_required
 def update_buzz(buzz_id):
   buzz = Buzz.query.get(buzz_id)
   update = request.json
@@ -77,3 +74,15 @@ def update_buzz(buzz_id):
 
 
 # delete a buzz
+@buzz_routes.route("/<buzz_id>", methods=["DELETE"])
+@login_required
+def delete_buzz(buzz_id):
+  buzz = Buzz.query.get(buzz_id)
+
+  db.session.delete(buzz)
+  db.session.commit()
+
+  return jsonify({
+    'message': 'Buzz successfully deleted',
+    'status_code': 200
+  }), 200
