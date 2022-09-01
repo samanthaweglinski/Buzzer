@@ -1,7 +1,7 @@
 """Initial migration.
 
 Revision ID: 42454c8689d5
-Revises: 
+Revises:
 Create Date: 2022-08-31 14:41:38.250687
 
 """
@@ -42,7 +42,7 @@ def upgrade():
     sa.Column('content', sa.String(length=255), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('buzz_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['buzz_id'], ['buzzes.id'], ),
+    sa.ForeignKeyConstraint(['buzz_id'], ['buzzes.id'], ondelete='CASCADE'),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
