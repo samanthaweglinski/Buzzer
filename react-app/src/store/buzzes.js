@@ -30,6 +30,7 @@ export const getBuzzes = () => async (dispatch) => {
 
   if (response.ok) {
     const buzzes = await response.json()
+    // console.log('buzzes:', buzzes)
     dispatch(getBuzzesAction(buzzes))
     return buzzes
   }
