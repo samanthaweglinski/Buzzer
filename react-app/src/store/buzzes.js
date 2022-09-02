@@ -4,9 +4,6 @@ const UPDATE_BUZZ = 'buzzes/UPDATE_BUZZ'
 const DELETE_BUZZ = 'buzzes/DELETE_BUZZ'
 
 
-export const allBuzzes = (state) => Object.values(state.buzzes)
-
-
 const getBuzzesAction = (buzzes) => ({
   type: GET_BUZZES,
   buzzes
