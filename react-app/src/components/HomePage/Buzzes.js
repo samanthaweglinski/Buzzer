@@ -6,7 +6,7 @@ import "../CSS/Buzzes.css"
 const Buzzes = () => {
   const dispatch = useDispatch();
   const buzzes = useSelector((state) => Object.values(state?.buzzes));
-  const user = useSelector((state) => state?.session?.user)
+  // const user = useSelector((state) => state?.session?.user)
 
   useEffect(() => {
     dispatch(getBuzzes()); // dispatch getBuzzes thunk which calls getBuzzes action
@@ -18,7 +18,7 @@ const Buzzes = () => {
     <div className='buzzes_container'>
       {buzzes.map((ele) => (
         <div key={ele.id} className='single_buzz'>
-          {ele.content},
+          {ele.content}
           <img src={ele.image_url} className='single_buzz_img'/>
         </div>
       ))}

@@ -37,13 +37,14 @@ export const getBuzzes = () => async (dispatch) => {
 }
 
 export const createBuzz = (buzzData) => async (dispatch) => {
-  const { content, image_url } = buzzData
+  const { content, user_id, image_url } = buzzData
 
-  const response = await fetch(`/api/buzzes`, {
+  const response = await fetch(`/api/buzzes/`, {
     method: "POST",
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       content,
+      user_id,
       image_url
     })
   })

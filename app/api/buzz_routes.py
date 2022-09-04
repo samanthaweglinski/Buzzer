@@ -39,42 +39,25 @@ def create_buzz():
   form = buzz_form.BuzzForm()
   form['csrf_token'].data = request.cookies['csrf_token']
 
+  content = form.data['content']
+  user_id = form.data['user_id']
+  image_url = form.data['image_url']
+
   if form.validate_on_submit():
 
     buzz = Buzz(
-      content = form.data['content'],
-      user_id = current_user.id,
-      image_url = form.data['image_url']
+      content = content,
+      user_id=user_id,
+      image_url = image_url
     )
 
-    db.session.add(server)
+    db.session.add(buzz)
     db.session.commit()
 
     return jsonify(buzz.to_dict()), 201
 
   else:
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
-
-  # new_buzz = buzz_form.BuzzForm()
-
-  # new_buzz['csrf_token'].data = request.cookies['csrf_token']
-  # user_id = new_buzz.data['user_id']
-  # content = new_buzz.data['content']
-  # image_url = new_buzz.data['image_url']
-
-  # if new_buzz.validate_on_submit():
-  #   buzz = Buzz(
-  #     user_id = user_id,
-  #     content = content,
-  #     image_url = image_url
-  #   )
-
-  #   db.session.add(buzz)
-  #   db.session.commit()
-  #   return jsonify(buzz.to_dict()), 201
-
-  # else:
-  #   return {'errors': validation_errors_to_error_messages(new_buzz.errors)}, 400
 
 
 # update a buzz (edit)
