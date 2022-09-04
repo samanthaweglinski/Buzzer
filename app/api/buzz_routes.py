@@ -13,9 +13,11 @@ buzz_routes = Blueprint("buzzes", __name__)
 @buzz_routes.route("/", methods=["GET"])
 # @login_required
 def all_buzzes():
+  if (current_user):
     buzzes = [buzz.to_dict() for buzz in Buzz.query.all()] # list comprehension
     return jsonify(buzzes)
-
+  else:
+    return "Must be logged in."
 
 # get a buzz by id
 @buzz_routes.route("/<buzz_id>", methods=["GET"])

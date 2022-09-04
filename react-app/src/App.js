@@ -27,13 +27,15 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      {/* <NavBar /> */}
       <Switch>
         <Route path='/login' exact={true}>
+          <h1>My Splash Page</h1>
           <LoginForm />
+          <h2>OR SIGNUP:</h2>
+          <SignUpForm />
         </Route>
         <Route path='/sign-up' exact={true}>
-          <SignUpForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
@@ -42,12 +44,11 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
-          {/* load buzzes component here */}
-        </ProtectedRoute>
-        <ProtectedRoute path='/home' exact={true}>
+          <NavBar />
           <Buzzes />
         </ProtectedRoute>
+        {/* <ProtectedRoute path='/home' exact={true}>
+        </ProtectedRoute> */}
       </Switch>
     </BrowserRouter>
   );
