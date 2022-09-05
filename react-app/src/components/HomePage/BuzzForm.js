@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { createBuzz } from "../../store/buzzes";
 import "../CSS/BuzzForm.css";
 
@@ -9,12 +9,43 @@ const BuzzForm = () => {
   const [content, setContent] = useState("");
   const [image_url, setImageUrl] = useState("");
   const dispatch = useDispatch();
+  const history = useHistory();
+  const user = useSelector((state) => state.session.user);
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const data = await dispatch(createBuzz(content, image_url));
+  //   if (data) {
+  //     setErrors(data);
+  //   }
+  // };
+
+  useEffect(() => {
+    const newErrors = [];
+    if (content?.length > 280) {
+      newErrors.push("Character limit of 280 exceeded.");
+    }
+    if (!content) {
+      newErrors.push("Content is required!");
+    }
+    if (newErrors.length) {
+      setErrors(newErrors);
+    } else {
+      setErrors([]);
+    }
+  }, [content, image_url]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await dispatch(createBuzz(content, image_url));
-    if (data) {
-      setErrors(data);
+    const payload = {
+      content: content,
+      user_id: user.id,
+      image_url: image_url,
+    };
+
+    const res = await dispatch(createBuzz(payload));
+    if (res) {
+      history.push(`/`);
     }
   };
 
