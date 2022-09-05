@@ -15,11 +15,11 @@ const Buzzes = () => {
   if (!buzzes) return null;
 
   return (
-    <div className='buzzes_container'>
+    <div className='buzzes-container'>
       {buzzes.map((ele) => (
-        <div key={ele.id} className='single_buzz'>
+        <div key={ele.id} className='single-buzz'>
           {ele.content}
-          <img src={ele.image_url} className='single_buzz_img'/>
+          <img src={ele.image_url} className='single-buzz-img'/>
         </div>
       ))}
     </div>

@@ -1,9 +1,14 @@
-.single_buzz {
+.buzzes-container {
+  border: 1px solid black;
+  background-color: darksalmon;
+}
+
+.single-buzz {
   border: 4mm ridge rgba(211, 220, 50, .6);
   margin: 1em;
 }
 
-.single_buzz_img {
+.single-buzz-img {
   max-width: 250px;
   max-height: auto;
 }
