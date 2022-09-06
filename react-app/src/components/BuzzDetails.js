@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getBuzzes } from "../store/buzzes";
-import EditBuzzForm from "./HomePage/EditBuzzModal/EditBuzzForm";
+// import EditBuzzForm from "./HomePage/EditBuzzModal/EditBuzzForm";
+import EditBuzzModal from "../components/HomePage/EditBuzzModal"
+import DeleteBuzzModal from "./HomePage/DeleteBuzzModal";
 
 const BuzzDetails = () => {
   const [hideButtons, setHideButtons] = useState(false);
@@ -20,7 +22,7 @@ const BuzzDetails = () => {
     setShowDropdown(!showDropdown);
   };
 
-  console.log(buzz)
+  // console.log(buzz)
 
   useEffect(() => {
     dispatch(getBuzzes()); // dispatch getBuzzes thunk which calls getBuzzes action
@@ -42,7 +44,9 @@ const BuzzDetails = () => {
             </button>
           </div>
           <div className="ServerPage-NavBar-buttons"></div>
-          {showDropdown && <EditBuzzForm buzz={buzz} id={buzz.id} />}
+          {showDropdown && <EditBuzzModal buzz={buzz} id={buzz.id} />}
+          {showDropdown && <DeleteBuzzModal buzz={buzz} />}
+
         </div>
       <div>
         {buzz.content}

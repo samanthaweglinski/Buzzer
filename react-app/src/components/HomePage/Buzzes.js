@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getBuzzes } from "../../store/buzzes";
 import EditBuzzForm from "./EditBuzzModal/EditBuzzForm";
+import EditBuzzModal from "./EditBuzzModal";
 import "../CSS/Buzzes.css";
 import { Link } from "react-router-dom";
 
