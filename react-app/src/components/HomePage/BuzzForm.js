@@ -17,9 +17,9 @@ const BuzzForm = () => {
     if (content?.length > 280) {
       newErrors.push("Character limit of 280 exceeded.");
     }
-    if (!content) {
-      newErrors.push("Content is required!");
-    }
+    // if (!content) {
+    //   newErrors.push("Content is required!");
+    // }
     if (newErrors.length) {
       setErrors(newErrors);
     } else {

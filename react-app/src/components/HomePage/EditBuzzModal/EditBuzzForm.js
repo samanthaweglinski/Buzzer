@@ -4,31 +4,16 @@ import { useHistory } from "react-router-dom";
 import { getBuzzes, updateBuzz } from "../../../store/buzzes";
 import { Modal } from '../../context/Modal'
 
-function EditBuzzForm({ buzz }) {
+function EditBuzzForm({ id  }) {
   const dispatch = useDispatch();
   const history = useHistory();
+  const buzz = useSelector(state => state.buzzes)
   const [content, setContent] = useState(buzz?.content);
   const [image_url, setImageUrl] = useState(buzz?.image_url);
   const user = useSelector((state) => state.session.user);
   const [showModal, setShowModal] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   const payload = {
-  //     user_id: user.id,
-  //     content,
-  //     image_url: image_url,
-  //   };
-
-  //   const editedBuzz = await dispatch(updateBuzz(payload, buzz.id));
-  //   if (editedBuzz) {
-  //     history.push(`/`);
-  //   }
-
-  //   onClick(); // closes modal
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,10 +31,6 @@ function EditBuzzForm({ buzz }) {
       setShowModal(false);
       setShowDropdown(false);
     }
-  };
-
-  const editServer = () => {
-    setShowDropdown(!showDropdown);
   };
 
   const updateContent = (e) => {

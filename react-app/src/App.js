@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import Buzzes from './components/HomePage/Buzzes';
 import BuzzForm from './components/HomePage/BuzzForm';
+import BuzzDetails from './components/BuzzDetails';
 import { authenticate } from './store/session';
 
 function App() {
@@ -28,7 +29,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <NavBar /> */}
       <Switch>
         <Route path='/login' exact={true}>
           <h1>My Splash Page</h1>
@@ -49,7 +49,9 @@ function App() {
           <BuzzForm />
           <Buzzes />
         </ProtectedRoute>
-        <ProtectedRoute path='/new-buzz' exact={true}>
+        <ProtectedRoute path='/buzzes/:buzzId' exact={true}>
+          <NavBar />
+          <BuzzDetails />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
