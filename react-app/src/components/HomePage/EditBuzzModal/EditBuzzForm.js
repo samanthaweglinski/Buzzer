@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { getBuzzes, updateBuzz } from "../../../store/buzzes";
 import { Modal } from '../../context/Modal'
 
-function EditBuzzForm({ id  }) {
+const EditBuzzForm = ({ id  }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const buzz = useSelector(state => state.buzzes)

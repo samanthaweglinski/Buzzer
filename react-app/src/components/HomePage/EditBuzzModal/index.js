@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
 import EditBuzzForm from "./EditBuzzForm";
 
-function EditBuzzModal({ buzz }) {
+const EditBuzzModal = ({ buzz }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
