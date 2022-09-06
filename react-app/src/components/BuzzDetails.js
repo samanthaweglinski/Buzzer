@@ -22,7 +22,6 @@ const BuzzDetails = () => {
     setShowDropdown(!showDropdown);
   };
 
-  // console.log(buzz)
 
   useEffect(() => {
     dispatch(getBuzzes(buzzId)); // dispatch getBuzzes thunk which calls getBuzzes action
@@ -43,10 +42,10 @@ const BuzzDetails = () => {
               <i className="fa-solid fa-ellipsis fa-xl"></i>
             </button>
           </div>
-          <div className="ServerPage-NavBar-buttons"></div>
-          {showDropdown && <EditBuzzModal buzz={buzz} id={buzz.id} />}
-          {showDropdown && <DeleteBuzzModal buzz={buzz} />}
-
+          <div className="ServerPage-NavBar-buttons">
+            {showDropdown && <EditBuzzModal buzz={buzz} id={buzz.id} />}
+            {showDropdown && <DeleteBuzzModal buzz={buzz} />}
+          </div>
         </div>
       <div>
         {buzz?.content}

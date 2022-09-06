@@ -16,9 +16,6 @@ const EditBuzzForm = ({ buzz }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // console.log('id:', buzz.id)
-    // console.log('buzz:', buzz)
-
     const payload = {
       id: buzz?.id,
       content,
