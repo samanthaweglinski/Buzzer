@@ -24,7 +24,7 @@ const deleteBuzzAction = (buzzId) => ({
 });
 
 export const getBuzzes = () => async (dispatch) => {
-  const response = await fetch(`/api/buzzes`);
+  const response = await fetch(`/api/buzzes/`);
 
   if (response.ok) {
     const buzzes = await response.json();

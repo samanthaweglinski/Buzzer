@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getBuzzes } from "../store/buzzes";
-// import EditBuzzForm from "./HomePage/EditBuzzModal/EditBuzzForm";
+import EditBuzzForm from "./HomePage/EditBuzzModal/EditBuzzForm";
 import EditBuzzModal from "../components/HomePage/EditBuzzModal"
 import DeleteBuzzModal from "./HomePage/DeleteBuzzModal";
 
@@ -13,8 +13,8 @@ const BuzzDetails = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const buzzes = useSelector((state) => Object.values(state?.buzzes));
-  const buzz = useSelector((state) => state.buzzes[buzzId]);
-  const sessionUser = useSelector((state) => state.session.user);
+  const buzz = useSelector((state) => state?.buzzes[buzzId]);
+  const sessionUser = useSelector((state) => state?.session.user);
   const [editActive, setEditActive] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -22,15 +22,14 @@ const BuzzDetails = () => {
     setShowDropdown(!showDropdown);
   };
 
-  // console.log(buzz)
 
   useEffect(() => {
-    dispatch(getBuzzes()); // dispatch getBuzzes thunk which calls getBuzzes action
-  }, [dispatch]);
+    dispatch(getBuzzes(buzzId)); // dispatch getBuzzes thunk which calls getBuzzes action
+  }, [dispatch, buzzId]);
 
   return (
     <div>
-      <div key={buzz.id} className="single-buzz">
+      <div key={buzz?.id} className="single-buzz">
         <div className="Buzz-NavBar">
           <div
             className="Buzzes-name"
@@ -43,14 +42,14 @@ const BuzzDetails = () => {
               <i className="fa-solid fa-ellipsis fa-xl"></i>
             </button>
           </div>
-          <div className="ServerPage-NavBar-buttons"></div>
-          {showDropdown && <EditBuzzModal buzz={buzz} id={buzz.id} />}
-          {showDropdown && <DeleteBuzzModal buzz={buzz} />}
-
+          <div className="ServerPage-NavBar-buttons">
+            {showDropdown && <EditBuzzModal buzz={buzz} id={buzz.id} />}
+            {showDropdown && <DeleteBuzzModal buzz={buzz} />}
+          </div>
         </div>
       <div>
-        {buzz.content}
-        <img src={buzz.image_url} className="single-buzz-img" alt="" />
+        {buzz?.content}
+        <img src={buzz?.image_url} className="single-buzz-img" alt="" />
       </div>
       </div>
     </div>
