@@ -17,6 +17,6 @@ const EditBuzzModal = ({ buzz }) => {
       )}
     </>
   );
-}
+};
 
 export default EditBuzzModal;

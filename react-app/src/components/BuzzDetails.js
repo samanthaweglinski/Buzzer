@@ -22,7 +22,7 @@ const BuzzDetails = () => {
     setShowDropdown(!showDropdown);
   };
 
-  console.log(buzz)
+  // console.log(buzz)
 
   useEffect(() => {
     dispatch(getBuzzes(buzzId)); // dispatch getBuzzes thunk which calls getBuzzes action
