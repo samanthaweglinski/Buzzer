@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { createBuzz } from "../../store/buzzes";
 import "../CSS/BuzzForm.css";
 
-const BuzzForm = ({ onClick }) => {
+const BuzzForm = () => {
   const [errors, setErrors] = useState([]);
   const [content, setContent] = useState("");
   const [image_url, setImageUrl] = useState("");
@@ -35,12 +35,9 @@ const BuzzForm = ({ onClick }) => {
       image_url: image_url,
     };
 
-    // onClick()
-
     const res = await dispatch(createBuzz(payload));
     if (res) {
       history.push(`/`);
-      // onClick()
     }
   };
 
