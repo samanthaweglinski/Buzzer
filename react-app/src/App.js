@@ -8,6 +8,8 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import Buzzes from './components/HomePage/Buzzes';
+import BuzzForm from './components/HomePage/BuzzForm';
+import BuzzDetails from './components/BuzzDetails';
 import { authenticate } from './store/session';
 
 function App() {
@@ -27,13 +29,14 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
       <Switch>
         <Route path='/login' exact={true}>
+          <h1>My Splash Page</h1>
           <LoginForm />
+          <h2>OR SIGNUP:</h2>
+          <SignUpForm />
         </Route>
         <Route path='/sign-up' exact={true}>
-          <SignUpForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
@@ -42,11 +45,13 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
-          {/* load buzzes component here */}
-        </ProtectedRoute>
-        <ProtectedRoute path='/home' exact={true}>
+          <NavBar />
+          <BuzzForm />
           <Buzzes />
+        </ProtectedRoute>
+        <ProtectedRoute path='/buzzes/:buzzId' exact={true}>
+          <NavBar />
+          <BuzzDetails />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
