@@ -8,14 +8,14 @@ const NavBar = () => {
   return (
     <nav className='left-nav'>
       <ul>
-        <li>
+        <div>
           <NavLink to='/' exact={true} activeClassName='active'>
-            Home
+            <img className="buzzer-icon" src="https://st2.depositphotos.com/1069290/10659/v/950/depositphotos_106590564-stock-illustration-bee-logo-sign-icon-vector.jpg?forcejpeg=true" alt=''/>
           </NavLink>
-        </li>
-        <li>
+        </div>
+        <div>
           <LogoutButton />
-        </li>
+        </div>
       </ul>
     </nav>
   );

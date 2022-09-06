@@ -11,7 +11,6 @@ import Buzzes from './components/HomePage/Buzzes';
 import BuzzForm from './components/HomePage/BuzzForm';
 import BuzzDetails from './components/BuzzDetails';
 import { authenticate } from './store/session';
-import EditBuzzForm from './components/HomePage/EditBuzzModal/EditBuzzForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -53,7 +52,6 @@ function App() {
         <ProtectedRoute path='/buzzes/:buzzId' exact={true}>
           <NavBar />
           <BuzzDetails />
-          {/* <EditBuzzForm /> */}
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
