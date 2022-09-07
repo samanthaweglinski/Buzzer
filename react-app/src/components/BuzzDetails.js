@@ -7,7 +7,6 @@ import EditBuzzModal from "../components/HomePage/EditBuzzModal";
 import DeleteBuzzModal from "./HomePage/DeleteBuzzModal";
 
 const BuzzDetails = () => {
-  const [hideButtons, setHideButtons] = useState(false);
   let { buzzId } = useParams();
   buzzId = Number(buzzId);
   const dispatch = useDispatch();
@@ -26,12 +25,12 @@ const BuzzDetails = () => {
     dispatch(getBuzzes(buzzId)); // dispatch getBuzzes thunk which calls getBuzzes action
   }, [dispatch, buzzId]);
 
-  console.log('buzz:', buzz)
+  console.log("buzz:", buzz);
 
   return (
     <div>
       <div key={buzz?.id} className="single-buzz">
-        {user && user.id == buzz.user_id ? (
+        {user && user?.id == buzz?.user_id ? (
           <>
             <div className="Buzz-NavBar">
               <div
@@ -51,14 +50,30 @@ const BuzzDetails = () => {
               </div>
             </div>
             <div>
-              {buzz?.content}
+              <NavLink
+                className="buzz-username"
+                to={`/users/${buzz?.user_id}`}
+              >
+                {`@${buzz?.user_id}`}
+              </NavLink>
+              <div>
+                {buzz?.content}
+              </div>
               <img src={buzz?.image_url} className="single-buzz-img" alt="" />
             </div>
           </>
         ) : (
           <>
             <div>
-              {buzz?.content}
+              <NavLink
+                className="buzz-username"
+                to={`/users/${buzz?.user_id}`}
+              >
+                {`@${buzz?.user_id}`}
+                </NavLink>
+                <div>
+                  {buzz?.content}
+                </div>
               <img src={buzz?.image_url} className="single-buzz-img" alt="" />
             </div>
           </>

@@ -1,7 +1,6 @@
-from http import server
 from flask import Blueprint, request, jsonify
-from app.models import db, Buzz
-from app.forms import buzz_form
+from app.models import db, Buzz, Comment
+from app.forms import buzz_form, comment_form
 from flask_login import login_required, current_user
 from .auth_routes import validation_errors_to_error_messages
 
@@ -47,7 +46,7 @@ def create_buzz():
 
     buzz = Buzz(
       content = content,
-      user_id=user_id,
+      user_id = user_id,
       image_url = image_url
     )
 
@@ -92,3 +91,43 @@ def delete_buzz(buzz_id):
     'message': 'Buzz successfully deleted',
     'status_code': 200
   }), 200
+
+
+# get all comments by buzz_id
+@buzz_routes.route("/<buzz_id>/comments", methods=["GET"])
+def get_comments_by_id(buzz_id):
+  comments = Comment.query.filter(Comment.buzz_id == buzz_id).all()
+
+  if not comments:
+    return "Error 404: The comments you are looking for can not be found."
+
+  response = [comment.to_dict() for comment in comments]
+  res = {"comments": response}
+  return res
+
+
+# creating comment on buzz
+@buzz_routes.route("/<buzz_id>/comments", methods=["POST"])
+def create_comment(buzz_id):
+  form = comment_form.CommentForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+
+  content = form.data['content']
+  user_id = form.data['user_id']
+  buzz_id = form.data['buzz_id']
+
+  if form.validate_on_submit():
+
+    comment = Comment(
+      content = content,
+      user_id = user_id,
+      buzz_id = buzz_id
+    )
+
+    db.session.add(comment)
+    db.session.commit()
+
+    return jsonify(comment.to_dict()), 201
+
+  else:
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import { signUp, demoLogin } from "../../store/session";
+import "../CSS/SplashPage.css"
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
