@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getBuzzes, updateBuzz } from "../../../store/buzzes";
-import { Modal } from "../../context/Modal";
 
-const EditBuzzForm = ({ buzz }) => {
+const EditBuzzForm = ({ buzz, onClick }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [content, setContent] = useState(buzz?.content);
@@ -28,6 +27,7 @@ const EditBuzzForm = ({ buzz }) => {
       await dispatch(getBuzzes());
       setShowModal(false);
       setShowDropdown(false);
+      history.push('/')
     }
   };
 
@@ -72,6 +72,7 @@ const EditBuzzForm = ({ buzz }) => {
             <button type="submit" className="edit-buzz-modal-submit-button">
               Update Buzz
             </button>
+            <div className="delete-option cancel" onClick={onClick}>Cancel</div>
           </div>
         </form>
       </div>
