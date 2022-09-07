@@ -7,7 +7,6 @@ import EditBuzzModal from "../components/HomePage/EditBuzzModal";
 import DeleteBuzzModal from "./HomePage/DeleteBuzzModal";
 
 const BuzzDetails = () => {
-  const [hideButtons, setHideButtons] = useState(false);
   let { buzzId } = useParams();
   buzzId = Number(buzzId);
   const dispatch = useDispatch();

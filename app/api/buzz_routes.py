@@ -1,4 +1,3 @@
-from http import server
 from flask import Blueprint, request, jsonify
 from app.models import db, Buzz, Comment
 from app.forms import buzz_form, comment_form
