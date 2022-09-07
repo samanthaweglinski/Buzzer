@@ -31,7 +31,7 @@ const BuzzDetails = () => {
   return (
     <div>
       <div key={buzz?.id} className="single-buzz">
-        {user && user.id == buzz.user_id ? (
+        {user && user?.id == buzz?.user_id ? (
           <>
             <div className="Buzz-NavBar">
               <div
