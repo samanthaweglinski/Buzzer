@@ -25,7 +25,7 @@ const BuzzDetails = () => {
     dispatch(getBuzzes(buzzId)); // dispatch getBuzzes thunk which calls getBuzzes action
   }, [dispatch, buzzId]);
 
-  console.log('buzz:', buzz)
+  console.log("buzz:", buzz);
 
   return (
     <div>
@@ -50,14 +50,30 @@ const BuzzDetails = () => {
               </div>
             </div>
             <div>
-              {buzz?.content}
+              <NavLink
+                className="buzz-username"
+                to={`/users/${buzz?.user_id}`}
+              >
+                {`@${buzz?.user_id}`}
+              </NavLink>
+              <div>
+                {buzz?.content}
+              </div>
               <img src={buzz?.image_url} className="single-buzz-img" alt="" />
             </div>
           </>
         ) : (
           <>
             <div>
-              {buzz?.content}
+              <NavLink
+                className="buzz-username"
+                to={`/users/${buzz?.user_id}`}
+              >
+                {`@${buzz?.user_id}`}
+                </NavLink>
+                <div>
+                  {buzz?.content}
+                </div>
               <img src={buzz?.image_url} className="single-buzz-img" alt="" />
             </div>
           </>
