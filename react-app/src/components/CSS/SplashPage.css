@@ -1,0 +1,44 @@
+.splashpage-container {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-x: hidden;
+}
+
+.left-container {
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}
+
+/* .backsplash-logo {
+  display: flex;
+  position: absolute;
+  z-index: 2;
+} */
+
+.left-backsplash {
+  z-index: 1;
+}
+
+.right-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  border: 1px solid green;
+  color: white;
+  background-color: black;
+  padding: 4em;
+  width: 100%;
+  z-index: 2;
+}
+
+.logo {
+  max-width: 8em;
+  max-height: auto;
+  margin-left: -27px;
+}

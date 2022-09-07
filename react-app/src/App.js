@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
@@ -11,6 +9,7 @@ import Buzzes from './components/HomePage/Buzzes';
 import BuzzForm from './components/HomePage/BuzzForm';
 import BuzzDetails from './components/BuzzDetails';
 import { authenticate } from './store/session';
+import SplashPage from './components/SplashPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -31,12 +30,7 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route path='/login' exact={true}>
-          <h1>My Splash Page</h1>
-          <LoginForm />
-          <h2>OR SIGNUP:</h2>
-          <SignUpForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
+          <SplashPage/>
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
