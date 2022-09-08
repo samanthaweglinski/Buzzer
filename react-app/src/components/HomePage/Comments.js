@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, NavLink, useParams } from "react-router-dom";
 import { getComments } from "../../store/comments";
+import CommentForm from "./CommentForm";
+import "../CSS/Comments.css"
 
 const Comments = () => {
   const dispatch = useDispatch();
@@ -21,13 +23,16 @@ const Comments = () => {
 
   return (
     <div className="comments-container">
-      <h3>Comments</h3>
+      <div className="comment-form-container">
+        <CommentForm/>
+      </div>
+      <div className="list-comments">
       {commentsByBuzz.map((ele) => (
         <div className="single-comment">
           <div>{ele.content}</div>
         </div>
-
       ))}
+      </div>
     </div>
   );
 };

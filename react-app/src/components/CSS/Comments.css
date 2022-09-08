@@ -1,0 +1,15 @@
+.comment-form-container {
+  border: thin solid white;
+
+  margin: 1em 1em;
+}
+
+.list-comments {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.single-comment {
+  border: thin solid white;
+  margin: 1em 1em;
+}
