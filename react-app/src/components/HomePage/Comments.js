@@ -5,6 +5,7 @@ import { getComments } from "../../store/comments";
 import CommentForm from "./CommentForm";
 import "../CSS/Comments.css";
 import EditCommentModal from "./EditCommentModal";
+import DeleteCommentModal from "./DeleteCommentModal";
 
 const Comments = () => {
   const dispatch = useDispatch();
@@ -53,7 +54,7 @@ const Comments = () => {
               </div>
               <div className="options-buttons">
                 {showDropdown && <EditCommentModal comment={ele} />}
-                {/* {showDropdown && <DeleteBuzzModal buzz={buzz} />} */}
+                {showDropdown && <DeleteCommentModal comment={ele} />}
               </div>
             </div>
           </div>

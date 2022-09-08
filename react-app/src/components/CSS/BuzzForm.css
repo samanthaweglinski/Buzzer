@@ -1,6 +1,8 @@
 .buzz-form {
+  display: flex;
   border: .5px solid white;
   border-top: none;
   border-width: thin;
   border-bottom: none;
+  justify-content: center;
 }
