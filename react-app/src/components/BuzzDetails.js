@@ -5,7 +5,7 @@ import { getBuzzes } from "../store/buzzes";
 import EditBuzzModal from "../components/HomePage/EditBuzzModal";
 import DeleteBuzzModal from "./HomePage/DeleteBuzzModal";
 import NavBar from "./NavBar";
-import "./CSS/BuzzDetails.css"
+import "./CSS/BuzzDetails.css";
 
 const BuzzDetails = () => {
   let { buzzId } = useParams();
@@ -79,6 +79,9 @@ const BuzzDetails = () => {
               </div>
             </>
           )}
+        </div>
+        <div className="comments-for-single-buzz">
+          <h2>RENDER COMMENTS COMPONENT HERE</h2>
         </div>
       </div>
       <div className="buzz-details-right-container">

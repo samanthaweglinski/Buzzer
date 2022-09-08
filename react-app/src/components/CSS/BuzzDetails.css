@@ -20,11 +20,7 @@
 
 .buzz-details-mid-container {
   width: 100%;
-}
-
-.buzz-details-right-container {
   border-left: thin solid white;
-  width: 100%;
 }
 
 .specific-buzz {
@@ -63,4 +59,21 @@
 .right-info {
   display: flex;
   padding: 1em 2em;
+}
+
+.edit-buzz-button:hover {
+  background-color: gray;
+}
+
+.delete-buzz-button:hover {
+  background-color: gray;
+}
+
+.comments-for-single-buzz {
+  border: thin solid white;
+}
+
+.buzz-details-right-container {
+  border-left: thin solid white;
+  width: 100%;
 }
