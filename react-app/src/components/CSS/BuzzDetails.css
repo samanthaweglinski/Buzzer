@@ -5,26 +5,32 @@
   right: 0;
   bottom: 0;
   left: 0;
-  justify-content: center;
+  /* justify-content: center; */
+  justify-content: flex-start;
   overflow: hidden;
   background-color: black;
   color: white;
+  width: 100%;
 }
 
 .buzz-details-left-container {
   display: flex;
+  width: 100%;
 }
 
 .buzz-details-mid-container {
-  width: 50%;
+  width: 100%;
 }
 
 .buzz-details-right-container {
+  border-left: thin solid white;
+  width: 100%;
 }
 
 .specific-buzz {
   display: flex;
   border: 0.5px solid white;
+  border-top: none;
   border-width: thin;
   color: white;
   padding: 2em 2em 1em 2em;
@@ -56,5 +62,5 @@
 
 .right-info {
   display: flex;
-  padding: 1em 1em;
+  padding: 1em 2em;
 }

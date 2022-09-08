@@ -14,7 +14,9 @@ const HomePage = () => {
         <Buzzes />
       </div>
       <div className="homepage-right-container">
-        <h2>What's happening</h2>
+        <div className="right-content">
+          <h1>Coming Soon</h1>
+        </div>
       </div>
     </div>
   );
