@@ -1,4 +1,4 @@
-.buzz-details-container {
+.buzz-details-main-container {
   display: flex;
   position: absolute;
   top: 0;
@@ -19,12 +19,42 @@
   width: 50%;
 }
 
+.buzz-details-right-container {
+}
+
+.specific-buzz {
+  display: flex;
+  border: 0.5px solid white;
+  border-width: thin;
+  color: white;
+  padding: 2em 2em 1em 2em;
+  justify-content: space-between;
+}
+
 .buzz-options {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   align-content: flex-start;
 }
- .buzz-username {
+
+.buzz-username {
   color: white;
- }
+}
+
+.buzz-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.single-buzz-img {
+  display: flex;
+  max-width: 250px;
+  max-height: auto;
+}
+
+.right-info {
+  display: flex;
+  padding: 1em 1em;
+}

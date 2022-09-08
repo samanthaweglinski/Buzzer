@@ -29,14 +29,24 @@ const BuzzDetails = () => {
   console.log("buzz:", buzz);
 
   return (
-    <div className="buzz-details-container">
+    <div className="buzz-details-main-container">
       <div className="buzz-details-left-container">
         <NavBar />
       </div>
       <div className="buzz-details-mid-container">
-        <div key={buzz?.id} className="single-buzz">
+        <div key={buzz?.id} className="specific-buzz">
           {user && user?.id == buzz?.user_id ? (
             <>
+              <div className="buzz-content">
+                <NavLink
+                  className="buzz-username"
+                  to={`/users/${buzz?.user_id}`}
+                >
+                  {`@${buzz?.user_id}`}
+                </NavLink>
+                <div>{buzz?.content}</div>
+                <img src={buzz?.image_url} className="single-buzz-img" alt="" />
+              </div>
               <div className="buzz-options">
                 <div
                   className="Buzzes-name"
@@ -53,16 +63,6 @@ const BuzzDetails = () => {
                   {showDropdown && <EditBuzzModal buzz={buzz} id={buzz.id} />}
                   {showDropdown && <DeleteBuzzModal buzz={buzz} />}
                 </div>
-              </div>
-              <div>
-                <NavLink
-                  className="buzz-username"
-                  to={`/users/${buzz?.user_id}`}
-                >
-                  {`@${buzz?.user_id}`}
-                </NavLink>
-                <div>{buzz?.content}</div>
-                <img src={buzz?.image_url} className="single-buzz-img" alt="" />
               </div>
             </>
           ) : (
@@ -82,7 +82,9 @@ const BuzzDetails = () => {
         </div>
       </div>
       <div className="buzz-details-right-container">
-        <h1>Trending</h1>
+        <div className="right-info">
+          <h1>Trending</h1>
+        </div>
       </div>
     </div>
   );
