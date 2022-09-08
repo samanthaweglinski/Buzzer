@@ -83,7 +83,7 @@ const BuzzDetails = () => {
       </div>
       <div className="buzz-details-right-container">
         <div className="right-info">
-          <h1>Trending</h1>
+          <h1>Coming Soon</h1>
         </div>
       </div>
     </div>
