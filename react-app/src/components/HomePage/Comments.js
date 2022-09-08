@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, NavLink, useParams } from "react-router-dom";
 import { getComments } from "../../store/comments";
 import CommentForm from "./CommentForm";
-import "../CSS/Comments.css"
+import "../CSS/Comments.css";
+import EditCommentModal from "./EditCommentModal";
 
 const Comments = () => {
   const dispatch = useDispatch();
@@ -11,9 +12,15 @@ const Comments = () => {
   let { buzzId } = useParams();
   buzzId = Number(buzzId);
   const buzz = useSelector((state) => state?.buzzes[buzzId]);
-  const commentsByBuzz = Object.values(comments).filter((comment) => comment?.buzz_id === buzzId)
+  const commentsByBuzz = Object.values(comments).filter(
+    (comment) => comment?.buzz_id === buzzId
+  );
+  const [editActive, setEditActive] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
 
-  console.log("commentsByBuzz:", commentsByBuzz);
+  const editComment = () => {
+    setShowDropdown(!showDropdown);
+  };
 
   useEffect(() => {
     dispatch(getComments(buzzId));
@@ -24,14 +31,33 @@ const Comments = () => {
   return (
     <div className="comments-container">
       <div className="comment-form-container">
-        <CommentForm/>
+        <CommentForm />
       </div>
       <div className="list-comments">
-      {commentsByBuzz.map((ele) => (
-        <div className="single-comment">
-          <div>{ele.content}</div>
-        </div>
-      ))}
+        {commentsByBuzz.map((ele) => (
+          <div className="single-comment">
+            <div className="comment-content">
+              <div>{ele.content}</div>
+            </div>
+            <div className="comment-options">
+              <div
+                className="Buzzes-name"
+                onClick={() => {
+                  editComment();
+                  setEditActive(!editActive);
+                }}
+              >
+                <button className="buzz-options-button">
+                  <i className="fa-solid fa-ellipsis fa-xl"></i>
+                </button>
+              </div>
+              <div className="options-buttons">
+                {showDropdown && <EditCommentModal comment={ele} />}
+                {/* {showDropdown && <DeleteBuzzModal buzz={buzz} />} */}
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
