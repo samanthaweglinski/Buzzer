@@ -8,9 +8,6 @@ const Buzzes = () => {
   const dispatch = useDispatch();
   const buzzes = useSelector((state) => Object.values(state?.buzzes));
   // const user = useSelector((state) => state?.session?.user)
-  // const [showDropdown, setShowDropdown] = useState(false);
-  // const [editActive, setEditActive] = useState(false);
-  // const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     dispatch(getBuzzes()); // dispatch getBuzzes thunk which calls getBuzzes action
@@ -25,12 +22,12 @@ const Buzzes = () => {
           <Link to={`/buzzes/${ele.id}`} key={ele.id} className="single_buzz">
             <div className="single-buzz-content-and-image">
               <div>
-                <NavLink
+                {/* <NavLink
                   className="buzz-username"
                   to={`/users/${ele?.user_id}`}
-                >
+                > */}
                   {`@${ele?.user_id}`}
-                </NavLink>
+                {/* </NavLink> */}
               </div>
               <div>{ele.content}</div>
               <div>
