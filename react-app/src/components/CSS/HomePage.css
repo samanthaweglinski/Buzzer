@@ -1,0 +1,22 @@
+.homepage-container {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  justify-content: center;
+  overflow: hidden;
+  background-color: black;
+  color: white;
+}
+
+.homepage-left-container {
+  display: flex;
+}
+
+.homepage-mid-container {
+  overflow-y: scroll;
+  width: 50%;
+}
+

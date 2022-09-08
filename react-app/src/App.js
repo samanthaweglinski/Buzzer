@@ -5,11 +5,10 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-import Buzzes from './components/HomePage/Buzzes';
-import BuzzForm from './components/HomePage/BuzzForm';
 import BuzzDetails from './components/BuzzDetails';
 import { authenticate } from './store/session';
 import SplashPage from './components/SplashPage';
+import HomePage from './components/HomePage/HomePage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,12 +38,9 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <NavBar />
-          <BuzzForm />
-          <Buzzes />
+          <HomePage />
         </ProtectedRoute>
         <ProtectedRoute path='/buzzes/:buzzId' exact={true}>
-          <NavBar />
           <BuzzDetails />
         </ProtectedRoute>
       </Switch>

@@ -1,6 +1,3 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
 import LoginForm from "./auth/LoginForm";
 import SignUpForm from "./auth/SignUpForm";
 import twitterLogo from "./images/twitter_logo.svg";
@@ -11,7 +8,6 @@ const SplashPage = () => {
   return (
     <div className="splashpage-container">
       <div className="left-container">
-        {/* <img alt="logo" className="backsplash-logo" src={twitterLogo} /> */}
         <img alt="backsplash" className="left-backsplash" src={backsplash} />
       </div>
       <div className="right-container">
