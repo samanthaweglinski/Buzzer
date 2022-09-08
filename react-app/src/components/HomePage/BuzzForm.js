@@ -72,7 +72,7 @@ const BuzzForm = () => {
           <input
             name="image_url"
             type="text"
-            placeholder="Paste image URL here"
+            placeholder="Paste optional image URL here"
             value={image_url}
             onChange={updateImage}
           />
