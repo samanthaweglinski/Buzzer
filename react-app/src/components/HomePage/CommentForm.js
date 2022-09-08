@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { createBuzz } from "../../store/buzzes";
-import "../CSS/BuzzForm.css";
+import { useHistory, useParams } from "react-router-dom";
+import { createComment } from "../../store/comments";
+import "../CSS/CommentForm.css";
 
-const BuzzForm = () => {
+const CommentForm = () => {
   const [errors, setErrors] = useState([]);
   const [content, setContent] = useState("");
-  const [image_url, setImageUrl] = useState("");
+  let { buzzId } = useParams();
+  buzzId = Number(buzzId);
+  const buzz = useSelector((state) => state?.buzzes[buzzId]);
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
@@ -25,19 +27,19 @@ const BuzzForm = () => {
     } else {
       setErrors([]);
     }
-  }, [content, image_url]);
+  }, [content]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
       content: content,
       user_id: user.id,
-      image_url: image_url,
+      buzz_id: buzz.id,
     };
 
-    const res = await dispatch(createBuzz(payload));
+    const res = await dispatch(createComment(payload));
     if (res) {
-      history.push(`/`);
+      history.push(`/buzzes/${buzzId}`);
     }
   };
 
@@ -45,12 +47,8 @@ const BuzzForm = () => {
     setContent(e.target.value);
   };
 
-  const updateImage = (e) => {
-    setImageUrl(e.target.value);
-  };
-
   return (
-    <div className="buzz-form">
+    <div className="comment-form">
       <form onSubmit={handleSubmit}>
         <div>
           {errors.map((error, ind) => (
@@ -58,29 +56,19 @@ const BuzzForm = () => {
           ))}
         </div>
         <div>
-          <label htmlFor="content">Content</label>
+          <label htmlFor="content">Comment: </label>
           <input
             name="content"
             type="text"
-            placeholder="What's on your mind?"
+            placeholder="Comment on this Buzz"
             value={content}
             onChange={updateContent}
           />
-        </div>
-        <div>
-          <label htmlFor="image_url">Image</label>
-          <input
-            name="image_url"
-            type="text"
-            placeholder="Paste optional image URL here"
-            value={image_url}
-            onChange={updateImage}
-          />
-          <button type="submit">Buzz</button>
+          <button type="submit">Comment</button>
         </div>
       </form>
     </div>
   );
 };
 
-export default BuzzForm;
+export default CommentForm;

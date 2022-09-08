@@ -98,9 +98,6 @@ def delete_buzz(buzz_id):
 def get_comments_by_id(buzz_id):
   comments = Comment.query.filter(Comment.buzz_id == buzz_id).all()
 
-  if not comments:
-    return "Error 404: The comments you are looking for can not be found."
-
   response = [comment.to_dict() for comment in comments]
   res = {"comments": response}
   return res
