@@ -15,7 +15,8 @@
 
 .homepage-left-container {
   display: flex;
-  width: 100%;
+  /* width: 100%; */
+  width: 50%;
 }
 
 .homepage-mid-container {
@@ -24,7 +25,8 @@
 }
 
 .homepage-right-container {
-  width: 100%;
+  /* width: 100%; */
+  width: 50%;
 }
 
 .homepage-mid-container::-webkit-scrollbar {
