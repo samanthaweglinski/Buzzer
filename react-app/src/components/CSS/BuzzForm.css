@@ -1,8 +1,21 @@
-.buzz-form {
+.buzz-form-container {
   display: flex;
   border: .5px solid white;
   border-top: none;
   border-width: thin;
   border-bottom: none;
   justify-content: center;
+  width: 100%;
+}
+
+.buzz-form {
+  display: flex;
+}
+
+textarea {
+  resize: none;
+}
+
+.buzz-form-submit {
+  display: flex;
 }

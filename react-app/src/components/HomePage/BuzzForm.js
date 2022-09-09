@@ -50,15 +50,15 @@ const BuzzForm = () => {
   };
 
   return (
-    <div className="buzz-form">
-      <form onSubmit={handleSubmit}>
-        <div>
+    <div className="buzz-form-container">
+      <form onSubmit={handleSubmit} className="buzz-form">
+        <div className="errors">
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div>
-          <label htmlFor="content">Content</label>
+        <div className="buzz-content-input">
+          <label htmlFor="content"></label>
           <input
             name="content"
             type="text"
@@ -67,8 +67,8 @@ const BuzzForm = () => {
             onChange={updateContent}
           />
         </div>
-        <div>
-          <label htmlFor="image_url">Image</label>
+        <div className="buzz-image-input">
+          <label htmlFor="image_url"></label>
           <input
             name="image_url"
             type="text"
@@ -76,6 +76,8 @@ const BuzzForm = () => {
             value={image_url}
             onChange={updateImage}
           />
+        </div>
+        <div className="buzz-form-submit">
           <button type="submit">Buzz</button>
         </div>
       </form>

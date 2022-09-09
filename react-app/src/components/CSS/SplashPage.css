@@ -51,6 +51,7 @@
 .signup-container {
   display: flex;
   flex-direction: column;
+  margin-bottom: -4em;
 }
 
 .signup-form {
@@ -65,4 +66,8 @@
 
 .demo-login {
   margin-left: 1em;
+}
+
+.top-right-container {
+  margin-bottom: -4em;
 }
