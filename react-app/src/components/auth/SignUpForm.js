@@ -8,8 +8,8 @@ const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [profile_pic, setProfilePic] = useState("");
-  const [bio, setBio] = useState("");
+  const [profile_pic, setProfilePic] = useState("https://www.alphr.com/wp-content/uploads/2020/10/twitter.png");
+  const [bio, setBio] = useState("Hello World!");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const user = useSelector((state) => state.session.user);
@@ -84,7 +84,7 @@ const SignUpForm = () => {
             value={email}
           ></input>
         </div>
-        <div>
+        {/* <div>
           <label>Profile Pic URL</label>
           <input
             type="text"
@@ -101,7 +101,7 @@ const SignUpForm = () => {
             onChange={updateBio}
             value={bio}
           ></input>
-        </div>
+        </div> */}
         <div>
           <label>Password</label>
           <input

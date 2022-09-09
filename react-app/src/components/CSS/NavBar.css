@@ -1,7 +1,9 @@
 .left-nav {
-  /* border: .5px solid white; */
-  background-color: #15202B;
-  border-width: thin;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .buzzer-icon {
@@ -19,4 +21,35 @@
   width: 227px;
   height: 47px;
   font: 14px;
+}
+
+.current-user-container {
+  display: flex;
+  align-items: center;
+  margin: 1em 3em;
+}
+
+.user-pfp {
+  height: 45px;
+  width: 45px;
+  border-radius: 50px;
+}
+
+.current-user-username {
+  padding: 1em 1em;
+  font-size: 17px;
+}
+
+.nav-icons {
+  display: flex;
+  flex-direction: column;
+  margin-right: 3em;
+}
+
+.bee-img {
+  margin: 1em 1em;
+}
+
+.logout-button-component {
+  margin: 1em 1em;
 }

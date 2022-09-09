@@ -1,24 +1,33 @@
-
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
-import './CSS/NavBar.css'
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
+import LogoutButton from "./auth/LogoutButton";
+import bird from "../components/images/twitter_logo.svg";
+import "./CSS/NavBar.css";
 
 const NavBar = () => {
+  const user = useSelector((state) => state?.session?.user);
+
+  console.log(user);
+
   return (
-    <nav className='left-nav'>
-      <ul>
-        <div className='bee-img'>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            <img className="buzzer-icon" src="https://st2.depositphotos.com/1069290/10659/v/950/depositphotos_106590564-stock-illustration-bee-logo-sign-icon-vector.jpg?forcejpeg=true" alt=''/>
+    <nav className="left-nav">
+      <div className="nav-icons">
+        <div className="bee-img">
+          <NavLink to="/" exact={true} activeClassName="active">
+            <img className="buzzer-icon" src={bird} alt="" />
           </NavLink>
         </div>
-        <div className='logout-button'>
+        <div className="logout-button-component">
           <LogoutButton />
-        </div>
-      </ul>
+      </div>
+      </div>
+      <div className="current-user-container">
+        <img src={user?.profile_pic} alt="user-pfp" className="user-pfp" />
+        <div className="current-user-username">@{user?.username}</div>
+      </div>
     </nav>
   );
-}
+};
 
 export default NavBar;
