@@ -3,13 +3,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import { signUp, demoLogin } from "../../store/session";
 import "../CSS/SplashPage.css"
+import "../CSS/SignUpForm.css"
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [profilePic, setProfilePic] = useState("");
-  const [bio, setBio] = useState("");
+  const [profile_pic, setProfilePic] = useState("https://www.alphr.com/wp-content/uploads/2020/10/twitter.png");
+  const [bio, setBio] = useState("Hello World!");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const user = useSelector((state) => state.session.user);
@@ -19,11 +20,11 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, email, profile_pic, bio, password));
       if (data) {
         setErrors(data);
       }
-    }
+    } else setErrors(['Password does not match'])
   };
 
   const updateUsername = (e) => {
@@ -60,8 +61,8 @@ const SignUpForm = () => {
 
   return (
     <>
-      <form onSubmit={onSignUp}>
-        <div>
+      <form onSubmit={onSignUp} className="signup-form">
+        <div className="errors">
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
@@ -84,13 +85,13 @@ const SignUpForm = () => {
             value={email}
           ></input>
         </div>
-        <div>
+        {/* <div>
           <label>Profile Pic URL</label>
           <input
             type="text"
             name="profile_pic"
             onChange={updateProfilePic}
-            value={profilePic}
+            value={profile_pic}
           ></input>
         </div>
         <div>
@@ -101,7 +102,7 @@ const SignUpForm = () => {
             onChange={updateBio}
             value={bio}
           ></input>
-        </div>
+        </div> */}
         <div>
           <label>Password</label>
           <input
@@ -118,12 +119,12 @@ const SignUpForm = () => {
             name="repeat_password"
             onChange={updateRepeatPassword}
             value={repeatPassword}
-            required={true}
+            // required={true}
           ></input>
         </div>
         <button type="submit">Sign Up</button>
       </form>
-      <button
+      {/* <button
         className="demo-login-btn"
         type="button"
         onClick={() => {
@@ -131,21 +132,7 @@ const SignUpForm = () => {
         }}
       >
         Demo Login
-      </button>
-
-    {/* comment back in once signup/login modals working */}
-      {/* <div className="signin-section">Already have an account?</div>
-      <div>
-        <button
-          className="signin-btn"
-          type="button"
-          onClick={() => {
-            goToLogin();
-          }}
-        >
-          Sign In
-        </button>
-      </div> */}
+      </button> */}
     </>
   );
 };

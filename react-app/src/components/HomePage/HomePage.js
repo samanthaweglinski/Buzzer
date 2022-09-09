@@ -4,6 +4,8 @@ import Buzzes from "./Buzzes";
 import "../CSS/HomePage.css";
 
 const HomePage = () => {
+
+
   return (
     <div className="homepage-container">
       <div className="homepage-left-container">
@@ -14,9 +16,6 @@ const HomePage = () => {
         <Buzzes />
       </div>
       <div className="homepage-right-container">
-        {/* <div className="right-content">
-          <h1>Coming Soon</h1>
-        </div> */}
       </div>
     </div>
   );

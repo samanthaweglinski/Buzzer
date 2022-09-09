@@ -7,7 +7,6 @@ import { Link, NavLink } from "react-router-dom";
 const Buzzes = () => {
   const dispatch = useDispatch();
   const buzzes = useSelector((state) => Object.values(state?.buzzes));
-  // const user = useSelector((state) => state?.session?.user)
 
   useEffect(() => {
     dispatch(getBuzzes()); // dispatch getBuzzes thunk which calls getBuzzes action

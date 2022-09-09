@@ -1,1 +1,13 @@
+.logout-button {
+  color:white;
+  cursor:pointer;
+}
 
+.logout-button:hover{
+  color:white;
+  cursor:pointer;
+}
+
+.fa-arrow-right-from-bracket {
+  font-size: 44px;
+}
