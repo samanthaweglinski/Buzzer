@@ -20,12 +20,12 @@ const NavBar = () => {
         </div>
         <div className="linkedin">
           <a href='https://www.linkedin.com/in/samanthaweglinski/'>
-          <i class="fa-brands fa-linkedin-in"></i>
+          <i className="fa-brands fa-linkedin-in"></i>
           </a>
         </div>
         <div className="github">
           <a href='https://github.com/samanthaweglinski'>
-          <i class="fa-brands fa-github"></i>
+          <i className="fa-brands fa-github"></i>
           </a>
         </div>
         <div className="logout-button-component">

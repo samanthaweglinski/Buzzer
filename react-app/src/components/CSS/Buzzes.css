@@ -3,6 +3,7 @@
   flex-direction: column-reverse;
   border: 0.5px solid white;
   color: white;
+  overflow-x: hidden;
 }
 
 .single-buzz {
