@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import { signUp, demoLogin } from "../../store/session";
 import "../CSS/SplashPage.css"
+import "../CSS/SignUpForm.css"
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -60,8 +61,8 @@ const SignUpForm = () => {
 
   return (
     <>
-      <form onSubmit={onSignUp}>
-        <div>
+      <form onSubmit={onSignUp} className="signup-form">
+        <div className="errors">
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
@@ -123,7 +124,7 @@ const SignUpForm = () => {
         </div>
         <button type="submit">Sign Up</button>
       </form>
-      <button
+      {/* <button
         className="demo-login-btn"
         type="button"
         onClick={() => {
@@ -131,7 +132,7 @@ const SignUpForm = () => {
         }}
       >
         Demo Login
-      </button>
+      </button> */}
     </>
   );
 };

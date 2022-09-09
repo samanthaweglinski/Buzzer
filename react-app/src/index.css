@@ -31,4 +31,9 @@ button {
   width: fit-content;
   word-break: break-word;
   border: 0;
+  margin-top: 10px;
+}
+
+.errors {
+  color: red;
 }

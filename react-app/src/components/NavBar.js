@@ -18,9 +18,19 @@ const NavBar = () => {
             <img className="buzzer-icon" src={bird} alt="" />
           </NavLink>
         </div>
+        <div className="linkedin">
+          <a href='https://www.linkedin.com/in/samanthaweglinski/'>
+          <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+        </div>
+        <div className="github">
+          <a href='https://github.com/samanthaweglinski'>
+          <i class="fa-brands fa-github"></i>
+          </a>
+        </div>
         <div className="logout-button-component">
           <LogoutButton />
-      </div>
+        </div>
       </div>
       <div className="current-user-container">
         <img src={user?.profile_pic} alt="user-pfp" className="user-pfp" />
