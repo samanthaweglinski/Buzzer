@@ -10,6 +10,7 @@
 
 .buzz-form {
   display: flex;
+  width: 100%;
 }
 
 textarea {

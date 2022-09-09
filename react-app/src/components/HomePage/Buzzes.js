@@ -7,10 +7,22 @@ import { Link, NavLink } from "react-router-dom";
 const Buzzes = () => {
   const dispatch = useDispatch();
   const buzzes = useSelector((state) => Object.values(state?.buzzes));
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     dispatch(getBuzzes()); // dispatch getBuzzes thunk which calls getBuzzes action
   }, [dispatch]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch('/api/users/');
+      const responseData = await response.json();
+      setUsers(responseData.users);
+    }
+    fetchData();
+  }, []);
+
+  // console.log('users:', users)
 
   if (!buzzes) return null;
 
@@ -21,12 +33,9 @@ const Buzzes = () => {
           <Link to={`/buzzes/${ele.id}`} key={ele.id} className="single_buzz">
             <div className="single-buzz-content-and-image">
               <div>
-                {/* <NavLink
-                  className="buzz-username"
-                  to={`/users/${ele?.user_id}`}
-                > */}
-                  {`@${ele?.user_id}`}
-                {/* </NavLink> */}
+                {/* {`@${ele?.user_id}`} */}
+                <img src={users[ele?.user_id].profile_pic} alt=""/>
+                {`@${users[ele?.user_id].username}`}
               </div>
               <div>{ele.content}</div>
               <div>
