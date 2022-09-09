@@ -13,22 +13,35 @@ const BuzzForm = () => {
   const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    const newErrors = [];
-    if (content?.length > 280) {
-      newErrors.push("Character limit of 280 exceeded.");
+    const errors = [];
+    const imgRegex = new RegExp(
+      /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/
+    );
+    if (image_url && !imgRegex.test(image_url)) {
+      errors.push(
+        "Invalid Image Url. URL must contain a .png, .jpg, .jpeg, .gif, .png or .svg!"
+      );
     }
-    if (!content) {
-      newErrors.push("Content is required!");
-    }
-    if (newErrors.length) {
-      setErrors(newErrors);
-    } else {
-      setErrors([]);
-    }
-  }, [content, image_url]);
+    setErrors(errors);
+  }, [image_url]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!content) {
+      setErrors(["Content is required"]);
+      return;
+    }
+    if (content && content.trim().length === 0) {
+      setErrors(["Content cannot be empty"]);
+      return;
+    }
+
+    if (content.length > 280) {
+      setErrors(["Buzz content cannot exceed 280 characters"]);
+      return;
+    }
+
     const payload = {
       content: content,
       user_id: user.id,

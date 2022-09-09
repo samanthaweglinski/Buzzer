@@ -1,0 +1,6 @@
+.edit-buzz-form {
+  display: flex;
+  margin: 1em;
+  align-items: center;
+  flex-direction: column;
+}

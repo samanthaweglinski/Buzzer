@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getBuzzes, updateBuzz } from "../../../store/buzzes";
+import "../../CSS/EditBuzzForm.css"
 
 const EditBuzzForm = ({ buzz, onClick }) => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const EditBuzzForm = ({ buzz, onClick }) => {
   return (
     <div className="dropdown-container">
       <div className="edit-buzz-button" onClick={() => setShowModal(true)}>
-        <form onSubmit={handleSubmit} className="block">
+        <form onSubmit={handleSubmit} className="edit-buzz-form">
           <div>
             <div className="edit-buzz-modal-content">
               <label className="edit-buzz-modal-main-label">Edit Content</label>
