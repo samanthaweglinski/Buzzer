@@ -118,7 +118,7 @@ const SignUpForm = () => {
             name="repeat_password"
             onChange={updateRepeatPassword}
             value={repeatPassword}
-            required={true}
+            // required={true}
           ></input>
         </div>
         <button type="submit">Sign Up</button>
@@ -132,20 +132,6 @@ const SignUpForm = () => {
       >
         Demo Login
       </button>
-
-    {/* comment back in once signup/login modals working */}
-      {/* <div className="signin-section">Already have an account?</div>
-      <div>
-        <button
-          className="signin-btn"
-          type="button"
-          onClick={() => {
-            goToLogin();
-          }}
-        >
-          Sign In
-        </button>
-      </div> */}
     </>
   );
 };

@@ -11,15 +11,25 @@ const SplashPage = () => {
         <img alt="backsplash" className="left-backsplash" src={backsplash} />
       </div>
       <div className="right-container">
-        <img alt="logo" className="logo" src={twitterLogo} />
-        <h1>Happening now</h1>
-        <h2>Join Buzzer today.</h2>
-        <div className="signup-form">
-          <SignUpForm />
+        <div className="bird-logo">
+          <img alt="logo" className="logo" src={twitterLogo} />
         </div>
-        <h2>Already have an account?</h2>
-        <div className="login-form">
-          <LoginForm />
+        <div className="happening-now">
+          <h1>
+            Happening now
+          </h1>
+        </div>
+        <div className="signup-container">
+          <h2>Join Buzzer today.</h2>
+          <div className="signup-form">
+            <SignUpForm />
+          </div>
+        </div>
+        <div className="login-container">
+          <h2>Already have an account?</h2>
+          <div className="login-form">
+            <LoginForm />
+          </div>
         </div>
       </div>
     </div>
