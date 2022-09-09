@@ -7,10 +7,24 @@ import { Link, NavLink } from "react-router-dom";
 const Buzzes = () => {
   const dispatch = useDispatch();
   const buzzes = useSelector((state) => Object.values(state?.buzzes));
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     dispatch(getBuzzes()); // dispatch getBuzzes thunk which calls getBuzzes action
+
+    async function fetchData() {
+      const response = await fetch('/api/users/');
+      const responseData = await response.json();
+      setUsers(responseData.users);
+    }
+    fetchData();
+
   }, [dispatch]);
+
+  // useEffect(() => {
+  // }, []);
+
+  console.log('users:', users)
 
   if (!buzzes) return null;
 
@@ -20,15 +34,11 @@ const Buzzes = () => {
         <div key={ele.id} className="single-buzz">
           <Link to={`/buzzes/${ele.id}`} key={ele.id} className="single_buzz">
             <div className="single-buzz-content-and-image">
-              <div>
-                {/* <NavLink
-                  className="buzz-username"
-                  to={`/users/${ele?.user_id}`}
-                > */}
-                  {`@${ele?.user_id}`}
-                {/* </NavLink> */}
+              <div className="user-container">
+                <img src={users[ele?.user_id - 1]?.profile_pic} alt="" className="buzz-pfp"/>
+                {`@${users[ele?.user_id - 1]?.username}`}
               </div>
-              <div>{ele.content}</div>
+              <div className="buzz-content">{ele.content}</div>
               <div>
                 <img src={ele.image_url} className="single-buzz-img" alt="" />
               </div>

@@ -9,7 +9,7 @@
   border: 0.5px solid white;
   border-width: thin;
   color: white;
-  padding: 1em 6em;
+  padding: 1em 2em;
 }
 
 .single-buzz-img {
@@ -20,3 +20,19 @@
 .single-buzz-content-and-image {
   color: white;
 }
+
+.buzz-pfp {
+  height: 45px;
+  width: 45px;
+  border-radius: 50px;
+}
+
+.user-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-bottom: 2em;
+}
+ .buzz-content {
+  margin-bottom: 1em;
+ }
