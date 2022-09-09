@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getBuzzes, updateBuzz } from "../../../store/buzzes";
-import "../../CSS/EditBuzzForm.css"
+import "../../CSS/EditBuzzForm.css";
 
 const EditBuzzForm = ({ buzz, onClick }) => {
   const dispatch = useDispatch();
@@ -12,14 +12,30 @@ const EditBuzzForm = ({ buzz, onClick }) => {
   const user = useSelector((state) => state.session.user);
   const [showModal, setShowModal] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [errors, setErrors] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!content) {
+      setErrors(["Content is required"]);
+      return;
+    }
+
+    if (content && content.trim().length === 0) {
+      setErrors(["Content field cannot be empty"]);
+      return;
+    }
+
+    if (content.length > 280) {
+      setErrors(["Content length cannot exceed 280 characters"]);
+      return;
+    }
+
     const payload = {
       id: buzz?.id,
       content,
-      image_url: image_url
+      image_url: image_url,
     };
 
     const response = await dispatch(updateBuzz(payload));
@@ -28,7 +44,7 @@ const EditBuzzForm = ({ buzz, onClick }) => {
       await dispatch(getBuzzes());
       setShowModal(false);
       setShowDropdown(false);
-      history.push('/')
+      history.push("/");
     }
   };
 
@@ -44,6 +60,11 @@ const EditBuzzForm = ({ buzz, onClick }) => {
     <div className="dropdown-container">
       <div className="edit-buzz-button" onClick={() => setShowModal(true)}>
         <form onSubmit={handleSubmit} className="edit-buzz-form">
+          <div className="errors">
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
           <div>
             <div className="edit-buzz-modal-content">
               <label className="edit-buzz-modal-main-label">Edit Content</label>
@@ -73,7 +94,9 @@ const EditBuzzForm = ({ buzz, onClick }) => {
             <button type="submit" className="edit-buzz-modal-submit-button">
               Update Buzz
             </button>
-            <div className="delete-option cancel" onClick={onClick}>Cancel</div>
+            <div className="delete-option cancel" onClick={onClick}>
+              Cancel
+            </div>
           </div>
         </form>
       </div>

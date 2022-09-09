@@ -9,6 +9,7 @@ import DeleteCommentModal from "./DeleteCommentModal";
 
 const Comments = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state?.session.user);
   const comments = useSelector((state) => Object.values(state?.comments));
   let { buzzId } = useParams();
   buzzId = Number(buzzId);
@@ -37,26 +38,36 @@ const Comments = () => {
       <div className="list-comments">
         {commentsByBuzz.map((ele) => (
           <div className="single-comment">
-            <div className="comment-content">
-              <div>{ele.content}</div>
-            </div>
-            <div className="comment-options">
-              <div
-                className="Buzzes-name"
-                onClick={() => {
-                  editComment();
-                  setEditActive(!editActive);
-                }}
-              >
-                <button className="buzz-options-button">
-                  <i className="fa-solid fa-ellipsis fa-xl"></i>
-                </button>
-              </div>
-              <div className="options-buttons">
-                {showDropdown && <EditCommentModal comment={ele} />}
-                {showDropdown && <DeleteCommentModal comment={ele} />}
-              </div>
-            </div>
+            {user && user?.id == ele?.user_id ? (
+              <>
+                <div className="comment-content">
+                  <div>{ele.content}</div>
+                </div>
+                <div className="comment-options">
+                  <div
+                    className="Buzzes-name"
+                    onClick={() => {
+                      editComment();
+                      setEditActive(!editActive);
+                    }}
+                  >
+                    <button className="buzz-options-button">
+                      <i className="fa-solid fa-ellipsis fa-xl"></i>
+                    </button>
+                  </div>
+                  <div className="options-buttons">
+                    {showDropdown && <EditCommentModal comment={ele} />}
+                    {showDropdown && <DeleteCommentModal comment={ele} />}
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="comment-content">
+                  <div>{ele.content}</div>
+                </div>
+              </>
+            )}
           </div>
         ))}
       </div>

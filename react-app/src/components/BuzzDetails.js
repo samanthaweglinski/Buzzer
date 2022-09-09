@@ -63,12 +63,6 @@ const BuzzDetails = () => {
           ) : (
             <>
               <div className="buzz-content">
-                {/* <NavLink
-                  className="buzz-username"
-                  to={`/users/${buzz?.user_id}`}
-                >
-                  {`@${buzz?.user_id}`}
-                </NavLink> */}
                 <div>{buzz?.content}</div>
                 <img src={buzz?.image_url} className="single-buzz-img" alt="" />
               </div>
@@ -80,12 +74,10 @@ const BuzzDetails = () => {
         </div>
       </div>
       <div className="buzz-details-right-container">
-        {/* <div className="right-info">
-          <h1>Coming Soon</h1>
-        </div> */}
       </div>
     </div>
   );
 };
 
 export default BuzzDetails;
+

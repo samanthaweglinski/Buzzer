@@ -1,14 +1,17 @@
 .comment-form-container {
   border: thin solid white;
   margin: 1em 1em;
+  word-break: break-all
 }
 
 .list-comments {
   display: flex;
   flex-direction: column-reverse;
+  word-break: break-all
 }
 
 .single-comment {
   border: thin solid white;
   margin: 1em 1em;
+  word-break: break-all
 }

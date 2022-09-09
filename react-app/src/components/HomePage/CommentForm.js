@@ -14,23 +14,24 @@ const CommentForm = () => {
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
 
-  useEffect(() => {
-    const newErrors = [];
-    if (content?.length > 280) {
-      newErrors.push("Character limit of 280 exceeded.");
-    }
-    if (!content) {
-      newErrors.push("Content is required!");
-    }
-    if (newErrors.length) {
-      setErrors(newErrors);
-    } else {
-      setErrors([]);
-    }
-  }, [content]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!content) {
+      setErrors(["Comment content is required"]);
+      return;
+    }
+    if (content && content.trim().length === 0) {
+      setErrors(["Comment content cannot be empty"]);
+      return;
+    }
+
+    if (content.length > 280) {
+      setErrors(["Comment content cannot exceed 280 characters"]);
+      return;
+    }
+
     const payload = {
       content: content,
       user_id: user.id,
@@ -50,7 +51,7 @@ const CommentForm = () => {
   return (
     <div className="comment-form">
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="errors">
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
