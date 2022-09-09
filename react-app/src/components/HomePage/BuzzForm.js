@@ -29,11 +29,11 @@ const BuzzForm = () => {
     e.preventDefault();
 
     if (!content) {
-      setErrors(["Content is required"]);
+      setErrors(["Buzz content is required"]);
       return;
     }
     if (content && content.trim().length === 0) {
-      setErrors(["Content cannot be empty"]);
+      setErrors(["Buzz content cannot be empty"]);
       return;
     }
 

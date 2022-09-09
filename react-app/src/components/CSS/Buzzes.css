@@ -11,6 +11,7 @@
   border-width: thin;
   color: white;
   padding: 1em 2em;
+  word-break: break-all
 }
 
 .single-buzz-img {
@@ -36,4 +37,5 @@
 }
  .buzz-content {
   margin-bottom: 1em;
+  word-break: break-all
  }
