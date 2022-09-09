@@ -11,18 +11,20 @@ const Buzzes = () => {
 
   useEffect(() => {
     dispatch(getBuzzes()); // dispatch getBuzzes thunk which calls getBuzzes action
-  }, [dispatch]);
 
-  useEffect(() => {
     async function fetchData() {
       const response = await fetch('/api/users/');
       const responseData = await response.json();
       setUsers(responseData.users);
     }
     fetchData();
-  }, []);
 
-  // console.log('users:', users)
+  }, [dispatch]);
+
+  // useEffect(() => {
+  // }, []);
+
+  console.log('users:', users)
 
   if (!buzzes) return null;
 
@@ -32,12 +34,11 @@ const Buzzes = () => {
         <div key={ele.id} className="single-buzz">
           <Link to={`/buzzes/${ele.id}`} key={ele.id} className="single_buzz">
             <div className="single-buzz-content-and-image">
-              <div>
-                {/* {`@${ele?.user_id}`} */}
-                <img src={users[ele?.user_id].profile_pic} alt=""/>
-                {`@${users[ele?.user_id].username}`}
+              <div className="user-container">
+                <img src={users[ele?.user_id - 1]?.profile_pic} alt="" className="buzz-pfp"/>
+                {`@${users[ele?.user_id - 1]?.username}`}
               </div>
-              <div>{ele.content}</div>
+              <div className="buzz-content">{ele.content}</div>
               <div>
                 <img src={ele.image_url} className="single-buzz-img" alt="" />
               </div>
