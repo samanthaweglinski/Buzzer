@@ -34,15 +34,6 @@ const SplashPage = () => {
           <div className="login-form">
             <LoginForm />
           </div>
-          <button
-            className="demo-login-btn"
-            type="button"
-            onClick={() => {
-              dispatch(demoLogin());
-            }}
-          >
-            Demo Login
-          </button>
         </div>
       </div>
     </div>

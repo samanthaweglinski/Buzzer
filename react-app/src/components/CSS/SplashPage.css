@@ -63,4 +63,6 @@
   flex-direction: column;
 }
 
-
+.demo-login {
+  margin-left: 1em;
+}
