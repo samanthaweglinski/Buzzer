@@ -80,3 +80,4 @@ const BuzzDetails = () => {
 };
 
 export default BuzzDetails;
+
