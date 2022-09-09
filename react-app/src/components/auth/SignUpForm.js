@@ -8,7 +8,7 @@ const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [profilePic, setProfilePic] = useState("");
+  const [profile_pic, setProfilePic] = useState("");
   const [bio, setBio] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -19,11 +19,11 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, email, profile_pic, bio, password));
       if (data) {
         setErrors(data);
       }
-    }
+    } else setErrors(['Password does not match'])
   };
 
   const updateUsername = (e) => {
@@ -90,7 +90,7 @@ const SignUpForm = () => {
             type="text"
             name="profile_pic"
             onChange={updateProfilePic}
-            value={profilePic}
+            value={profile_pic}
           ></input>
         </div>
         <div>
