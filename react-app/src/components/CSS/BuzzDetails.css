@@ -63,12 +63,12 @@
   padding: 1em 2em;
 }
 
-/* .edit-buzz-button:hover {
-  background-color: gray;
-} */
+.edit-buzz-button {
+  cursor: pointer;
+}
 
-.delete-buzz-button:hover {
-  background-color: gray;
+.delete-buzz-button {
+  cursor: pointer;
 }
 
 .comments-for-single-buzz {

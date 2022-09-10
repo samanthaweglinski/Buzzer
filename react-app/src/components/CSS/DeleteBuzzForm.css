@@ -1,0 +1,11 @@
+.edit-buzz-form {
+  display: flex;
+  margin: 1em;
+  align-items: center;
+  flex-direction: column;
+}
+
+.delete-option {
+  padding-left: 41px;
+  cursor: pointer;
+}

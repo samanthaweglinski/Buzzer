@@ -65,30 +65,39 @@ const BuzzForm = () => {
   return (
     <div className="buzz-form-container">
       <form onSubmit={handleSubmit} className="buzz-form">
-        <div className="errors">
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-        </div>
-        <div className="buzz-content-input">
-          <label htmlFor="content"></label>
-          <input
+        <div className="buzz-form-input-areas">
+          <div className="errors">
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
+          <div className="buzz-content-input">
+            <label htmlFor="content"></label>
+            <textarea
+              name="content"
+              type="text"
+              placeholder="What's on your mind?"
+              value={content}
+              onChange={updateContent}
+            />
+            {/* <input
             name="content"
             type="text"
             placeholder="What's on your mind?"
             value={content}
             onChange={updateContent}
-          />
-        </div>
-        <div className="buzz-image-input">
-          <label htmlFor="image_url"></label>
-          <input
-            name="image_url"
-            type="text"
-            placeholder="Paste optional image URL here"
-            value={image_url}
-            onChange={updateImage}
-          />
+          /> */}
+          </div>
+          <div className="buzz-image-input">
+            <label htmlFor="image_url"></label>
+            <input
+              name="image_url"
+              type="text"
+              placeholder="Paste optional image URL here"
+              value={image_url}
+              onChange={updateImage}
+            />
+          </div>
         </div>
         <div className="buzz-form-submit">
           <button type="submit">Buzz</button>
