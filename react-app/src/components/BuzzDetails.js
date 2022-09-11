@@ -17,6 +17,7 @@ const BuzzDetails = () => {
   const buzzes = useSelector((state) => Object.values(state?.buzzes));
   const buzz = useSelector((state) => state?.buzzes[buzzId]);
   const user = useSelector((state) => state?.session.user);
+  const [users, setUsers] = useState([]);
   const [editActive, setEditActive] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -26,8 +27,14 @@ const BuzzDetails = () => {
 
   useEffect(() => {
     dispatch(getBuzzes(buzzId)); // dispatch getBuzzes thunk which calls getBuzzes action
-  }, [dispatch, buzzId]);
 
+    async function fetchData() {
+      const response = await fetch("/api/users/");
+      const responseData = await response.json();
+      setUsers(responseData.users);
+    }
+    fetchData();
+  }, [dispatch, buzzId]);
 
   return (
     <div className="buzz-details-main-container">
@@ -39,6 +46,14 @@ const BuzzDetails = () => {
           {user && user?.id == buzz?.user_id ? (
             <>
               <div className="buzz-content">
+                <div className="user-container">
+                  <img
+                    src={users[buzz?.user_id - 1]?.profile_pic}
+                    alt=""
+                    className="buzz-pfp"
+                  />
+                  {`@${users[buzz?.user_id - 1]?.username}`}
+                </div>
                 <div>{buzz?.content}</div>
                 <img src={buzz?.image_url} className="single-buzz-img" alt="" />
               </div>
@@ -63,6 +78,14 @@ const BuzzDetails = () => {
           ) : (
             <>
               <div className="buzz-content">
+                <div className="user-container">
+                  <img
+                    src={users[buzz?.user_id - 1]?.profile_pic}
+                    alt=""
+                    className="buzz-pfp"
+                  />
+                  {`@${users[buzz?.user_id - 1]?.username}`}
+                </div>
                 <div>{buzz?.content}</div>
                 <img src={buzz?.image_url} className="single-buzz-img" alt="" />
               </div>
@@ -70,14 +93,12 @@ const BuzzDetails = () => {
           )}
         </div>
         <div className="comments-for-single-buzz">
-          <Comments/>
+          <Comments />
         </div>
       </div>
-      <div className="buzz-details-right-container">
-      </div>
+      <div className="buzz-details-right-container"></div>
     </div>
   );
 };
 
 export default BuzzDetails;
-
