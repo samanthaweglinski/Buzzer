@@ -80,13 +80,6 @@ const BuzzForm = () => {
               value={content}
               onChange={updateContent}
             />
-            {/* <input
-            name="content"
-            type="text"
-            placeholder="What's on your mind?"
-            value={content}
-            onChange={updateContent}
-          /> */}
           </div>
           <div className="buzz-image-input">
             <label htmlFor="image_url"></label>

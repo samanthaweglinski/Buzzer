@@ -10,7 +10,6 @@ const EditBuzzForm = ({ buzz, onClick }) => {
   const [content, setContent] = useState(buzz?.content);
   const [image_url, setImageUrl] = useState(buzz?.image_url);
   const user = useSelector((state) => state.session.user);
-  const [showModal, setShowModal] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [errors, setErrors] = useState([]);
 
@@ -42,7 +41,7 @@ const EditBuzzForm = ({ buzz, onClick }) => {
 
     if (response) {
       await dispatch(getBuzzes());
-      setShowModal(false);
+      onClick();
       setShowDropdown(false);
       history.push("/");
     }
@@ -58,7 +57,7 @@ const EditBuzzForm = ({ buzz, onClick }) => {
 
   return (
     <div className="dropdown-container">
-      <div className="edit-buzz-button" onClick={() => setShowModal(true)}>
+      <div className="edit-buzz-button">
         <form onSubmit={handleSubmit} className="edit-buzz-form">
           <div className="errors">
             {errors.map((error, ind) => (
@@ -94,7 +93,7 @@ const EditBuzzForm = ({ buzz, onClick }) => {
             <button type="submit" className="edit-buzz-modal-submit-button">
               Update Buzz
             </button>
-            <div className="delete-option cancel" onClick={onClick}>
+            <div className="buzz-delete-option cancel" onClick={onClick}>
               Cancel
             </div>
           </div>

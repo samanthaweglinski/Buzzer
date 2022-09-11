@@ -20,10 +20,10 @@ function DeleteBuzz({ buzz, onClick }) {
         <div>Are you sure you want to delete this buzz?</div>
       </div>
       <div className="delete-buzz-button-options">
-        <div className="delete-option delete-button" onClick={onDelete}>
+        <div className="buzz-delete-option delete-button" onClick={onDelete}>
           Delete
         </div>
-        <div className="delete-option cancel" onClick={onClick}>
+        <div className="buzz-delete-option cancel" onClick={onClick}>
           Cancel
         </div>
       </div>

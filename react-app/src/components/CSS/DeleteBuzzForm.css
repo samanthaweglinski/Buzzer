@@ -5,7 +5,7 @@
   flex-direction: column;
 }
 
-.delete-option {
+.buzz-delete-option {
   padding-left: 41px;
   cursor: pointer;
 }

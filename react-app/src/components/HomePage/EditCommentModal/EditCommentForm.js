@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { getComments, updateComment } from "../../../store/comments";
+import "../../CSS/EditCommentForm.css"
 
 const EditCommentForm = ({ comment, onClick }) => {
   const dispatch = useDispatch();
@@ -44,7 +45,7 @@ const EditCommentForm = ({ comment, onClick }) => {
 
     if (response) {
       await dispatch(getComments());
-      setShowModal(false);
+      onClick()
       setShowDropdown(false);
       history.push(`/buzzes/${buzzId}`);
     }
@@ -56,31 +57,31 @@ const EditCommentForm = ({ comment, onClick }) => {
 
   return (
     <div className="dropdown-container">
-      <div className="edit-buzz-button" onClick={() => setShowModal(true)}>
-        <form onSubmit={handleSubmit} className="block">
+      <div className="edit-comment-button" onClick={() => setShowModal(true)}>
+        <form onSubmit={handleSubmit} className="edit-comment-form">
           <div className="errors">
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))}
           </div>
           <div>
-            <div className="edit-buzz-modal-content">
-              <label className="edit-buzz-modal-main-label">Edit Content</label>
-              <div className="edit-buzz-modal-input-content-outer">
+            <div className="edit-comment-modal-content">
+              <label className="edit-comment-modal-main-label">Edit Content</label>
+              <div className="edit-comment-modal-input-content-outer">
                 <input
                   name="name"
-                  className="edit-buzz-modal-input-content-inner"
+                  className="edit-comment-modal-input-content-inner"
                   value={content}
                   onChange={updateContent}
                 />
               </div>
             </div>
           </div>
-          <div className="edit-buzz-buttons-container">
-            <button type="submit" className="edit-buzz-modal-submit-button">
+          <div className="edit-comment-buttons-container">
+            <button type="submit" className="edit-comment-modal-submit-button">
               Update Comment
             </button>
-            <div className="delete-option cancel" onClick={onClick}>
+            <div className="cancel-option" onClick={onClick}>
               Cancel
             </div>
           </div>
