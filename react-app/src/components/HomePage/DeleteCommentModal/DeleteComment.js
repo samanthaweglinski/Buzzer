@@ -10,7 +10,6 @@ function DeleteComment({ comment, onClick }) {
 
   const onDelete = () => {
     dispatch(deleteComment(comment.id));
-    history.push("/");
   };
 
   return (
