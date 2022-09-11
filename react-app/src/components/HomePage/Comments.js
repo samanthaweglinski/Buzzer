@@ -10,6 +10,7 @@ import DeleteCommentModal from "./DeleteCommentModal";
 const Comments = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.session.user);
+  const [users, setUsers] = useState([]);
   const comments = useSelector((state) => Object.values(state?.comments));
   let { buzzId } = useParams();
   buzzId = Number(buzzId);
@@ -26,6 +27,13 @@ const Comments = () => {
 
   useEffect(() => {
     dispatch(getComments(buzzId));
+
+    async function fetchData() {
+      const response = await fetch("/api/users/");
+      const responseData = await response.json();
+      setUsers(responseData.users);
+    }
+    fetchData();
   }, [buzzId, dispatch]);
 
   if (!comments) return null;
@@ -41,6 +49,14 @@ const Comments = () => {
             {user && user?.id == ele?.user_id ? (
               <>
                 <div className="comment-content">
+                <div className="user-container">
+                      <img
+                        src={users[ele?.user_id - 1]?.profile_pic}
+                        alt=""
+                        className="buzz-pfp"
+                      />
+                      {`@${users[ele?.user_id - 1]?.username}`}
+                    </div>
                   <div>{ele.content}</div>
                 </div>
                 <div className="comment-options">
@@ -63,7 +79,15 @@ const Comments = () => {
               </>
             ) : (
               <>
-                <div className="comment-content">
+                  <div className="comment-content">
+                  <div className="user-container">
+                      <img
+                        src={users[ele?.user_id - 1]?.profile_pic}
+                        alt=""
+                        className="buzz-pfp"
+                      />
+                      {`@${users[ele?.user_id - 1]?.username}`}
+                    </div>
                   <div>{ele.content}</div>
                 </div>
               </>
