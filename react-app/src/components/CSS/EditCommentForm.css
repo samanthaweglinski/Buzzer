@@ -1,0 +1,12 @@
+.edit-comment-form {
+  display: flex;
+  margin: 1em;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.cancel-option {
+  padding-left: 50px;
+  padding-top: 5px;
+}

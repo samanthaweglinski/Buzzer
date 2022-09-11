@@ -1,6 +1,13 @@
 input {
   display: flex;
   width: 200px;
+  border-radius: 30px;
+  padding: 4px 20px;
+  margin: 4px 0;
+}
+
+input:focus {
+  border: 3px solid #555;
 }
 
 .errors {

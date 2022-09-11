@@ -1,7 +1,8 @@
 .comment-form-container {
   border: thin solid white;
   margin: 1em 1em;
-  word-break: break-all
+  word-break: break-all;
+  padding: 1em 1em;
 }
 
 .list-comments {
@@ -11,7 +12,12 @@
 }
 
 .single-comment {
+  display: flex;
   border: thin solid white;
   margin: 1em 1em;
-  word-break: break-all
+  padding: 1em 1em;
+  word-break: break-all;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }

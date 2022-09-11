@@ -1,6 +1,24 @@
-.edit-buzz-form {
+.delete-buzz {
   display: flex;
   margin: 1em;
   align-items: center;
   flex-direction: column;
+}
+
+.delete-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.delete-option {
+  margin-top: 10px;
+}
+
+.delete-buzz-button-options {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-right: 40px;
+  margin-top: 10px;
 }

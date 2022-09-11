@@ -14,12 +14,58 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
+  margin-top: 20px;
 }
 
 textarea {
   resize: none;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 19.5px;
+  bottom: 20px;
+  left: 30px;
+  padding-bottom: 10px;
+  padding-left: 18px;
+  width: 100%;
+  border: none;
+  color: white;
+  background-color: #15202B;
+}
+
+.buzz-form-input-areas {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding-left: 10px;
 }
 
 .buzz-form-submit {
   display: flex;
+  width: 50%;
+  justify-content: center;
 }
+
+.buzz-image-input > input {
+  display: flex;
+  width: 200px;
+  border-radius: 0px;
+  padding: 4px 20px;
+  margin: 4px 0;
+  background-color: #15202B;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 19.5px;
+  width: 100%;
+  color: white;
+  resize: none;
+  bottom: 20px;
+  left: 30px;
+  padding-bottom: 10px;
+  border: none;
+}
+ .buzz-content-input {
+  width: 100%;
+ }
+
+ .buzz-image-input {
+  width: 100%;
+ }

@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteComment } from "../../../store/comments";
+import "../../CSS/DeleteCommentForm.css"
 
 function DeleteComment({ comment, onClick }) {
   let dispatch = useDispatch();
@@ -9,7 +10,6 @@ function DeleteComment({ comment, onClick }) {
 
   const onDelete = () => {
     dispatch(deleteComment(comment.id));
-    history.push("/");
   };
 
   return (
@@ -18,10 +18,10 @@ function DeleteComment({ comment, onClick }) {
         <h3>Delete comment?</h3>
         <div>Are you sure you want to delete this comment?</div>
       </div>
-      <div className="delete-option delete-button" onClick={onDelete}>
+      <div className="comment-delete-option delete-button" onClick={onDelete}>
         Delete
       </div>
-      <div className="delete-option cancel" onClick={onClick}>
+      <div className="comment-delete-option cancel" onClick={onClick}>
         Cancel
       </div>
     </div>
