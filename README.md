@@ -1,74 +1,81 @@
-# Flask React Project
+# Buzzer
 
-## Getting started
-1. Clone this repository (only this branch)
+Live Site: [Buzzer](https://buzzer-project.herokuapp.com/)
 
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
+![splash-page](https://user-images.githubusercontent.com/32751992/189552680-bec8033f-b135-49df-bd93-8eadec31db8b.png)
 
-2. Install dependencies
+Buzzer is a full-stack clone of [Twitter](https://twitter.com/). Users can view buzzes as well as send, edit, and delete their own. Users can also comment on other users buzzes.
 
-      ```bash
-      pipenv install -r requirements.txt
-      ```
+## Languages, Frameworks, Platforms and Libraries
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Make sure the SQLite3 database connection URL is in the **.env** file
+### Languages
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) 
 
-5. Get into your pipenv, migrate your database, seed your database, and run your Flask app
+### Backend
+![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white) ![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-100000?style=for-the-badge&logo=sql&logoColor=BA1212&labelColor=AD0000&color=A90000) ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
 
-   ```bash
-   pipenv shell
-   ```
+### Frontend
+![SocketIO](https://img.shields.io/badge/SocketIO-100000?style=for-the-badge&logo=sql&logoColor=BA1212&labelColor=AD0000&color=FFFFFF) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
-   ```bash
-   flask db upgrade
-   ```
+### Hosting
+![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
-   ```bash
-   flask seed all
-   ```
+## Wiki Links:
+* [Buzzer Wiki](https://github.com/samanthaweglinski/Buzzer/wiki)
+* [Database Schema](https://github.com/samanthaweglinski/Buzzer/wiki/Database-Schema)
+* [Features List](https://github.com/samanthaweglinski/Buzzer/wiki/MVP-Features)
+* [User Stories](https://github.com/samanthaweglinski/Buzzer/wiki/User-Stories)
 
-   ```bash
-   flask run
-   ```
+## Features
+#### Login or Signup as a New User
+![splash-page](https://user-images.githubusercontent.com/32751992/189552680-bec8033f-b135-49df-bd93-8eadec31db8b.png)
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+#### Create, Edit, and Delete a Buzz
+![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/32751992/189553410-60bf4395-9191-466a-b34b-f1eb512d07be.gif)
 
+#### View a Buzz's Comments
+![Screen Shot 2022-09-11 at 4 20 07 PM](https://user-images.githubusercontent.com/32751992/189553238-2493dc99-58e6-444f-871f-10f846b32270.png)
 
-<br>
+#### Create, Edit, and Delete a Comment
+![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/32751992/189553379-6d561399-643e-42c8-a237-865b2e04e3f3.gif)
 
-## Deploy to Heroku
-This repo comes configured with Github Actions. When you push to your main branch, Github will automatically pull your code, package and push it to Heroku, and then release the new image and run db migrations.
+## Steps to clone locally:
+1. Clone this repository:
+```bash
+git clone https://github.com/samanthaweglinski/Buzzer.git
+```
 
-1. Write your Dockerfile. In order for the Github action to work effectively, it must have a configured Dockerfile. Follow the comments found in this [Dockerfile](./Dockerfile) to write your own!
+2. Install backend dependencies:
 
-2. Create a new project on Heroku.
+```bash
+pipenv install -r requirements.txt
+```
 
-3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres".
+3. Create a `.env` file based on the example with proper settings for development environment:
+```
+SECRET_KEY=INSERT_SECRET_KEY_HERE
+DATABASE_URL=sqlite:///dev.db
+```
 
-4. Configure production environment variables. In your Heroku app settings -> config variables you should have two environment variables set:
+4. Start pipenv, migrate database, seed database, and run Flask app:
 
-   |    Key          |    Value    |
-   | -------------   | ----------- |
-   | `DATABASE_URL`  | Autogenerated when adding postgres to Heroku app |
-   | `SECRET_KEY`    | Random string full of entropy |
+```bash
+pipenv shell
+flask db upgrade
+flask seed all
+flask run
+```
 
-5. Generate a Heroku OAuth token for your Github Action. To do so, log in to Heroku via your command line with `heroku login`. Once you are logged in, run `heroku authorizations:create`. Copy the GUID value for the Token key.
+5. Install frontend dependencies: 
 
-6. In your Github Actions Secrets you should have two environment variables set. You can set these variables via your Github repository settings -> secrets -> actions. Click "New respository secret" to create
-each of the following variables:
+```bash
+cd react-app/
+npm install
+npm start
+```
 
-   |    Key            |    Value    |
-   | -------------     | ----------- |
-   | `HEROKU_API_KEY`  | Heroku Oauth Token (from step 6)|
-   | `HEROKU_APP_NAME` | Heroku app name    |
+6. Navigate to [localhost:3000](http://localhost:3000)
 
-7. Push to your `main` branch! This will trigger the Github Action to build your Docker image and deploy your application to the Heroku container registry. Please note that the Github Action will automatically upgrade your production database with `flask db upgrade`. However, it will *not* automatically seed your database. You must manually seed your production database if/when you so choose (see step 8).
-
-8. *Attention!* Please run this command *only if you wish to seed your production database*: `heroku run -a HEROKU_APP_NAME flask seed all`
 
 ## Helpful commands
 |    Command            |    Purpose    |
