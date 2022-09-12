@@ -43,6 +43,9 @@ function App() {
         <ProtectedRoute path='/buzzes/:buzzId' exact={true}>
           <BuzzDetails />
         </ProtectedRoute>
+        <ProtectedRoute path='*'>
+          <h1>Page Not Found</h1>
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
