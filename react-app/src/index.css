@@ -37,3 +37,8 @@ button {
 .errors {
   color: red;
 }
+
+.page-not-found {
+  color: white;
+  background-color: #15202B;
+}
