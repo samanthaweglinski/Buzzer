@@ -8,4 +8,9 @@
 .buzz-delete-option {
   padding-left: 41px;
   cursor: pointer;
+  border: thin solid;
+  padding: 10px;
+  background-color: #1DA1F2;
+  color: white;
+  border-radius: 30px;
 }
