@@ -45,12 +45,18 @@ const Buzzes = () => {
                 >
                   <div className="single-buzz-content-and-image">
                     <div className="user-container">
-                      <img
-                        src={users[ele?.user_id - 1]?.profile_pic}
-                        alt=""
-                        className="buzz-pfp"
-                      />
-                      {`@${users[ele?.user_id - 1]?.username}`}
+                      <Link
+                        to={`/users/${users[ele?.user_id - 1]?.id}`}
+                        key={users[ele?.user_id - 1]}
+                        className="single_buzz"
+                      >
+                        <img
+                          src={users[ele?.user_id - 1]?.profile_pic}
+                          alt=""
+                          className="buzz-pfp"
+                        />
+                        {`@${users[ele?.user_id - 1]?.username}`}
+                      </Link>
                     </div>
                     <div className="buzz-content">{ele.content}</div>
                     <div>
@@ -91,12 +97,18 @@ const Buzzes = () => {
                 >
                   <div className="single-buzz-content-and-image">
                     <div className="user-container">
-                      <img
-                        src={users[ele?.user_id - 1]?.profile_pic}
-                        alt=""
-                        className="buzz-pfp"
-                      />
-                      {`@${users[ele?.user_id - 1]?.username}`}
+                      <Link
+                        to={`/users/${users[ele?.user_id - 1]?.id}`}
+                        key={users[ele?.user_id - 1]}
+                        className="single_buzz"
+                      >
+                        <img
+                          src={users[ele?.user_id - 1]?.profile_pic}
+                          alt=""
+                          className="buzz-pfp"
+                        />
+                        {`@${users[ele?.user_id - 1]?.username}`}
+                      </Link>
                     </div>
                     <div className="buzz-content">{ele.content}</div>
                     <div>
