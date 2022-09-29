@@ -91,7 +91,7 @@
 }
 
 .buzz-details-right-container {
-  border-left: thin solid white;
+  /* border-left: thin solid white; */
   /* width: 100%; */
   width: 50%;
 }

@@ -23,6 +23,8 @@
   overflow-y: scroll;
   overflow-x: hidden;
   width: 100%;
+  border-left: 0.5px solid white;
+  /* border-right: 0.5px solid white; */
 }
 
 .user-profile-right-container {
@@ -42,4 +44,23 @@
 .user-profile-mid-container::-webkit-scrollbar-thumb {
   background-color: #202225;
   border-radius: 20px;
+}
+
+.user-details {
+  display: flex;
+  align-items: center;
+}
+
+.bio {
+  color: white;
+  word-break: break-all
+}
+
+.user-profile-mid-top {
+  /* border: 0.5px solid white; */
+  border-width: thin;
+  color: white;
+  padding: 1em 2em;
+  word-break: break-all;
+  border-bottom: 0.5px solid white;
 }
