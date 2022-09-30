@@ -39,3 +39,8 @@
   margin-bottom: 1em;
   word-break: break-all
  }
+
+ .single_buzz {
+  display: flex;
+  align-items: center;
+ }

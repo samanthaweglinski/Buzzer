@@ -1,0 +1,77 @@
+.user-profile-container {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  justify-content: flex-start;
+  overflow: hidden;
+  background-color: #15202B;
+  color: white;
+  width: 100%;
+}
+
+.user-profile-left-container {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  width: 50%;
+}
+
+.user-profile-mid-container {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100%;
+  border-left: 0.5px solid white;
+  /* border-right: 0.5px solid white; */
+}
+
+.user-profile-right-container {
+  /* width: 100%; */
+  width: 50%;
+}
+
+.user-profile-mid-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.user-profile-mid-container::-webkit-scrollbar-track {
+  background: #2E3338;
+  border-radius: 20px;
+}
+
+.user-profile-mid-container::-webkit-scrollbar-thumb {
+  background-color: #202225;
+  border-radius: 20px;
+}
+
+.user-details {
+  display: flex;
+  align-items: center;
+}
+
+.bio {
+  color: white;
+  word-break: break-all
+}
+
+.user-profile-mid-top {
+  /* border: 0.5px solid white; */
+  border-width: thin;
+  color: white;
+  padding: 1em 2em;
+  word-break: break-all;
+  border-bottom: 0.5px solid white;
+}
+
+.user-buzz-content {
+  border: 0.5px solid white;
+  /* border-right: none; */
+  padding: 5%;
+}
+
+.user-tweets {
+  display: flex;
+  flex-direction: column-reverse;
+}
