@@ -14,10 +14,8 @@ function User() {
   const [users, setUsers] = useState([]);
 
   const userBuzzes = buzzes.filter(function (buzz) {
-    return buzz.user_id == userId
-  })
-
-  // console.log({getUserBuzzes})
+    return buzz.user_id == userId;
+  });
 
   useEffect(() => {
     dispatch(getBuzzes()); // dispatch getBuzzes thunk which calls getBuzzes action
@@ -64,53 +62,34 @@ function User() {
           <div className="user-tweets">
             {userBuzzes.map((ele) => (
               <>
-                {ele.content}
+                <div className="user-buzz-content">
+                  <Link
+                    to={`/buzzes/${ele.id}`}
+                    key={ele.id}
+                    className="single_buzz"
+                  >
+                    <div className="single-buzz-content-and-image">
+                      <div className="user-container">
+                        <img
+                          src={users[ele?.user_id - 1]?.profile_pic}
+                          alt=""
+                          className="buzz-pfp"
+                        />
+                        {`@${users[ele?.user_id - 1]?.username}`}
+                      </div>
+                      <div className="buzz-content">{ele.content}</div>
+                      <div>
+                        <img
+                          src={ele.image_url}
+                          className="single-buzz-img"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </Link>
+                </div>
               </>
             ))}
-            {/* {buzzes.map((ele) => (
-              <div className="single-buzz">
-                {userId == ele?.user_id ? (
-                  <>
-                    <div className="buzz-content">
-                      <Link
-                        to={`/buzzes/${ele.id}`}
-                        key={ele.id}
-                        className="single_buzz"
-                      >
-                        <div className="single-buzz-content-and-image">
-                          <div className="user-container">
-                            <Link
-                              to={`/users/${users[ele?.user_id - 1]?.id}`}
-                              key={users[ele?.user_id - 1]}
-                              className="single_buzz"
-                            >
-                              <img
-                                src={users[ele?.user_id - 1]?.profile_pic}
-                                alt=""
-                                className="buzz-pfp"
-                              />
-                              {`@${users[ele?.user_id - 1]?.username}`}
-                            </Link>
-                          </div>
-                          <div className="buzz-content">{ele.content}</div>
-                          <div>
-                            <img
-                              src={ele.image_url}
-                              className="single-buzz-img"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                      </Link>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    Not user's tweet, will filter out
-                  </>
-                )}
-              </div>
-            ))} */}
           </div>
         </div>
       </div>
