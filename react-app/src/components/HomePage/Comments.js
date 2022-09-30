@@ -49,14 +49,20 @@ const Comments = () => {
             {user && user?.id == ele?.user_id ? (
               <>
                 <div className="comment-content">
-                <div className="user-container">
+                  <div className="user-container">
+                    <Link
+                      to={`/users/${users[ele?.user_id - 1]?.id}`}
+                      key={users[ele?.user_id - 1]}
+                      className="single_buzz"
+                    >
                       <img
                         src={users[ele?.user_id - 1]?.profile_pic}
                         alt=""
                         className="buzz-pfp"
                       />
                       {`@${users[ele?.user_id - 1]?.username}`}
-                    </div>
+                    </Link>
+                  </div>
                   <div>{ele.content}</div>
                 </div>
                 <div className="comment-options">
@@ -79,15 +85,21 @@ const Comments = () => {
               </>
             ) : (
               <>
-                  <div className="comment-content">
+                <div className="comment-content">
                   <div className="user-container">
+                    <Link
+                      to={`/users/${users[ele?.user_id - 1]?.id}`}
+                      key={users[ele?.user_id - 1]}
+                      className="single_buzz"
+                    >
                       <img
                         src={users[ele?.user_id - 1]?.profile_pic}
                         alt=""
                         className="buzz-pfp"
                       />
                       {`@${users[ele?.user_id - 1]?.username}`}
-                    </div>
+                    </Link>
+                  </div>
                   <div>{ele.content}</div>
                 </div>
               </>
