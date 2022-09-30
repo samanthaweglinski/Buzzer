@@ -13,6 +13,11 @@ function User() {
   const dispatch = useDispatch();
   const [users, setUsers] = useState([]);
 
+  const userBuzzes = buzzes.filter(function (buzz) {
+    return buzz.user_id == userId
+  })
+
+  // console.log({getUserBuzzes})
 
   useEffect(() => {
     dispatch(getBuzzes()); // dispatch getBuzzes thunk which calls getBuzzes action
@@ -57,7 +62,12 @@ function User() {
         </div>
         <div className="user-profile-mid-bottom">
           <div className="user-tweets">
-            {buzzes.map((ele) => (
+            {userBuzzes.map((ele) => (
+              <>
+                {ele.content}
+              </>
+            ))}
+            {/* {buzzes.map((ele) => (
               <div className="single-buzz">
                 {userId == ele?.user_id ? (
                   <>
@@ -100,7 +110,7 @@ function User() {
                   </>
                 )}
               </div>
-            ))}
+            ))} */}
           </div>
         </div>
       </div>
