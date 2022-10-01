@@ -1,11 +1,10 @@
 .buzz-form-container {
   display: flex;
-  border: .5px solid white;
   border-top: none;
-  border-width: thin;
   border-bottom: none;
   justify-content: center;
   width: 100%;
+  /* border: .5px solid gray; */
 }
 
 .buzz-form {
@@ -14,7 +13,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  margin-top: 20px;
+  border: .5px solid gray;
+  border-top: none;
 }
 
 textarea {

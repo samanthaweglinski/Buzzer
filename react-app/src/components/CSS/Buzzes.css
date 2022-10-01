@@ -1,13 +1,13 @@
 .buzzes-container {
   display: flex;
   flex-direction: column-reverse;
-  border: 0.5px solid white;
+  border: 0.5px solid gray;
   color: white;
   overflow-x: hidden;
 }
 
 .single-buzz {
-  border: 0.5px solid white;
+  border: 0.5px solid gray;
   border-width: thin;
   color: white;
   padding: 1em 2em;
