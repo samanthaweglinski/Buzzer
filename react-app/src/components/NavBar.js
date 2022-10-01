@@ -40,16 +40,16 @@ const NavBar = () => {
             <div className="link-description">Github</div>
           </a>
         </div>
-        <div className="logout-button-component">
-          <LogoutButton />
-          {/* <div className="link-description">Logout</div> */}
-        </div>
       </div>
-      <div className="current-user-container">
+      <div className="current-user-container-outer">
         <Link to={`/users/${user?.id}`} className='current-user-container'>
           <img src={user?.profile_pic} alt="user-pfp" className="user-pfp" />
           <div className="current-user-username">@{user?.username}</div>
         </Link>
+        <div className="logout-button-component">
+          <LogoutButton />
+          {/* <div className="link-description">Logout</div> */}
+        </div>
       </div>
     </nav>
   );
