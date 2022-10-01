@@ -4,6 +4,7 @@
   align-items: center;
   color:white;
   cursor:pointer;
+  font-size: 18px;
 }
 
 .logout-button:hover{
@@ -12,5 +13,7 @@
 }
 
 .fa-arrow-right-from-bracket {
-  font-size: 44px;
+  /* font-size: 44px; */
+  font-size: 30px;
 }
+
