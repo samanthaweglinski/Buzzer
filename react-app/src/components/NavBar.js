@@ -12,22 +12,26 @@ const NavBar = () => {
     <nav className="left-nav">
       <div className="nav-icons">
         <div className="bee-img">
-          <NavLink to="/" exact={true} activeClassName="active">
+          <NavLink to="/" exact={true} activeClassName="active" className='home-link'>
             <img className="buzzer-icon" src={bird} alt="" />
+            <div className="link-description">Home</div>
           </NavLink>
         </div>
         <div className="linkedin">
-          <a href='https://www.linkedin.com/in/samanthaweglinski/'>
-          <i className="fa-brands fa-linkedin-in"></i>
+          <a href="https://www.linkedin.com/in/samanthaweglinski/" className="linkedin-link">
+            <i className="fa-brands fa-linkedin-in"></i>
+            <div className="link-description">Linkedin</div>
           </a>
         </div>
         <div className="github">
-          <a href='https://github.com/samanthaweglinski'>
-          <i className="fa-brands fa-github"></i>
+          <a href="https://github.com/samanthaweglinski" className="github-link">
+            <i className="fa-brands fa-github"></i>
+            <div className="link-description">Github</div>
           </a>
         </div>
         <div className="logout-button-component">
           <LogoutButton />
+          <div className="link-description">Logout</div>
         </div>
       </div>
       <div className="current-user-container">
