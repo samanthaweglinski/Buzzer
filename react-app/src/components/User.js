@@ -93,7 +93,7 @@ function User() {
           </div>
         </div>
       </div>
-      <div className="user-profile-right-container">Right Container</div>
+      <div className="user-profile-right-container"></div>
     </div>
   );
 }

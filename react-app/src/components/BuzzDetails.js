@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useHistory, NavLink } from "react-router-dom";
+import { useParams, useHistory, NavLink, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getBuzzes } from "../store/buzzes";
 import EditBuzzModal from "../components/HomePage/EditBuzzModal";
@@ -47,12 +47,14 @@ const BuzzDetails = () => {
             <>
               <div className="buzz-content">
                 <div className="user-container">
+                  <Link to={`/users/${buzz?.user_id}`} className="user-profile-link">
                   <img
                     src={users[buzz?.user_id - 1]?.profile_pic}
                     alt=""
                     className="buzz-pfp"
                   />
                   {`@${users[buzz?.user_id - 1]?.username}`}
+                  </Link>
                 </div>
                 <div>{buzz?.content}</div>
                 <img src={buzz?.image_url} className="single-buzz-img" alt="" />

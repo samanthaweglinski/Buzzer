@@ -1,4 +1,7 @@
 .logout-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   color:white;
   cursor:pointer;
 }
