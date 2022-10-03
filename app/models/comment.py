@@ -8,9 +8,11 @@ class Comment(db.Model):
     content = db.Column(db.String(255), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     buzz_id = db.Column(db.Integer, db.ForeignKey('buzzes.id'), nullable=False)
+    like = db.Column(db.Integer, default=0)
 
     user = db.relationship('User', back_populates='comments')
     buzzes = db.relationship('Buzz', back_populates='comments')
+    like_list = db.relationship('Like', back_populates='comments', cascade="all, delete-orphan")
 
     def to_dict(self):
         return {
@@ -18,4 +20,5 @@ class Comment(db.Model):
             'content': self.content,
             'user_id': self.user_id,
             'buzz_id': self.buzz_id,
+            "likes": self.likes,
         }
