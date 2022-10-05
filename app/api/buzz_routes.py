@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from app.models import db, Buzz, Comment
+from app.models import db, Buzz, Comment, Like
 from app.forms import buzz_form, comment_form
 from flask_login import login_required, current_user
 from .auth_routes import validation_errors_to_error_messages
@@ -128,3 +128,25 @@ def create_comment(buzz_id):
 
   else:
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
+# liking a buzz
+@buzz_routes("/<int:id>/like/", methods=["POST"])
+@buzz_routes("/<int:id>/like", methods=["POST"])
+def like_buzz(id):
+  buzz = Buzz.query.get(id)
+  if buzz is not None:
+    buzz_dict = buzz.to_dict()
+    likes_list = buzz_dict["likes"]
+    user_likes = [x for x in likes_list if x["user_id"] == int(current_user.get_id())]
+    if len(user_likes) > 0:
+      return {"message": "Cannot like a buzz more than once!"}, 400
+    new_like = Like(
+            user_id = int(current_user.get_id()),
+            buzz_id = id
+        )
+    db.session.add(new_like)
+    db.session.commit()
+    return new_like.to_dict()
+  else:
+    return {"message": "Buzz you are looking for does not exist"}, 404
