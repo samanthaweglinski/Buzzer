@@ -5,7 +5,7 @@ class Like(db.Model):
   __tablename_ = 'likes'
 
   id = db.Column(db.Integer, primary_key=True)
-  user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullablbe=False)
+  user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   buzz_id = db.Column(db.Integer, db.ForeignKey('buzzes.id'), nullable=True)
   comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'), nullable=True)
 
