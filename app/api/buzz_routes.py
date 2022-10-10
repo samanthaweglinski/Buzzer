@@ -4,7 +4,7 @@ from app.forms import buzz_form, comment_form
 from flask_login import login_required, current_user
 from .auth_routes import validation_errors_to_error_messages
 
-buzz_routes = Blueprint("buzzes", __name__)
+buzz_routes = Blueprint('buzzes', __name__)
 
 
 # get all buzzes
@@ -131,8 +131,8 @@ def create_comment(buzz_id):
 
 
 # liking a buzz
-@buzz_routes("/<int:id>/like/", methods=["POST"])
-@buzz_routes("/<int:id>/like", methods=["POST"])
+@buzz_routes.route("/<int:id>/like/", methods=["POST"])
+@buzz_routes.route("/<int:id>/like", methods=["POST"])
 def like_buzz(id):
   buzz = Buzz.query.get(id)
   if buzz is not None:

@@ -3,11 +3,11 @@ from flask_login import login_required, current_user
 from app.models import db, User, Buzz, Comment, Like
 from .auth_routes import validation_errors_to_error_messages
 
-like_routes = Blueprint("likes", __name__)
+like_routes = Blueprint('likes', __name__)
 
 
-@like_routes("/<int:id>/", methods=["GET"])
-@like_routes("/<int:id>", methods=["GET"])
+# @like_routes("/<int:id>/", methods=["GET"])
+@like_routes.route("/<int:id>", methods=["GET"])
 def delete_like(id):
   like = Like.query.get(id)
   if like is not None:
