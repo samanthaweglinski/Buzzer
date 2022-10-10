@@ -142,7 +142,7 @@ def like_buzz(id):
     if len(user_likes) > 0:
       return {"message": "Cannot like a buzz more than once!"}, 400
     new_like = Like(
-            user_id = int(current_user.get_id()),
+            user_id = current_user.get_id(),
             buzz_id = id
         )
     db.session.add(new_like)
