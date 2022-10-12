@@ -2,6 +2,7 @@ const GET_BUZZES = "buzzes/GET_BUZZES";
 const CREATE_BUZZ = "buzzes/CREATE_BUZZ";
 const UPDATE_BUZZ = "buzzes/UPDATE_BUZZ";
 const DELETE_BUZZ = "buzzes/DELETE_BUZZ";
+const LIKE_BUZZ = "buzzes/LIKE_BUZZ";
 
 const getBuzzesAction = (buzzes) => ({
   type: GET_BUZZES,
@@ -21,6 +22,11 @@ const updateBuzzAction = (buzz) => ({
 const deleteBuzzAction = (buzzId) => ({
   type: DELETE_BUZZ,
   buzzId,
+});
+
+const likeBuzzAction = (like) => ({
+  type: LIKE_BUZZ,
+  like,
 });
 
 export const getBuzzes = () => async (dispatch) => {
@@ -84,6 +90,24 @@ export const deleteBuzz = (id) => async (dispatch) => {
   }
 };
 
+export const likeBuzz = (id) => async (dispatch) => {
+  const response = await fetch(`/api/buzzes/${id}/like`, {
+    method: "POST",
+  });
+  if (response.ok) {
+    const like = await response.json();
+    await dispatch(likeBuzzAction(like));
+    return like;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ["An error occurred, please try again."];
+  }
+};
+
 const buzzReducer = (state = {}, action) => {
   let newState = {};
   switch (action.type) {
@@ -105,6 +129,10 @@ const buzzReducer = (state = {}, action) => {
     case DELETE_BUZZ: {
       newState = { ...state };
       delete newState[action.buzzId];
+      return newState;
+    }
+    case LIKE_BUZZ: {
+      const newState = { ...state };
       return newState;
     }
     default:
