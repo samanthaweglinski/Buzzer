@@ -6,13 +6,14 @@ from .auth_routes import validation_errors_to_error_messages
 like_routes = Blueprint('likes', __name__)
 
 
-# @like_routes("/<int:id>/", methods=["GET"])
-@like_routes.route("/<int:id>", methods=["GET"])
+@like_routes.route("/<int:id>/", methods=["DELETE"])
+@like_routes.route("/<int:id>", methods=["DELETE"])
 def delete_like(id):
   like = Like.query.get(id)
   if like is not None:
     like_dict = like.to_dict()
-    if (like_dict['user_id'] == int(current_user.get_id())):
+    current_user_id = current_user.get_id()
+    if (like_dict['user_id'] == current_user_id):
       db.session.delete(like)
       db.session.commit()
       return{"message": "You have unliked this buzz."}
