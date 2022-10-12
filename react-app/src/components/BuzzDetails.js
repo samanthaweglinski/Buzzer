@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory, NavLink, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getBuzzes } from "../store/buzzes";
+import { getBuzzes, likeBuzz } from "../store/buzzes";
 import EditBuzzModal from "../components/HomePage/EditBuzzModal";
 import DeleteBuzzModal from "./HomePage/DeleteBuzzModal";
 import NavBar from "./NavBar";
 import "./CSS/BuzzDetails.css";
 import Comments from "./HomePage/Comments";
 import { getComments } from "../store/comments";
+import solidHeart from "../components/images/solid_heart.svg";
+import hollowHeart from "../components/images/hollow_heart.svg";
 
 const BuzzDetails = () => {
   let { buzzId } = useParams();
@@ -20,6 +22,12 @@ const BuzzDetails = () => {
   const [users, setUsers] = useState([]);
   const [editActive, setEditActive] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [isLikedByUser, setIsLikedByUser] = useState(false);
+  const [likeCounter, setLikeCounter] = useState(buzz?.likes?.length);
+  const [likesArray, setLikesArray] = useState(buzz?.likes);
+  const [likedBuzz, setLikedBuzz] = useState(
+    likesArray.find((like) => like.user_id === user.id)
+  );
 
   const editBuzz = () => {
     setShowDropdown(!showDropdown);
@@ -36,6 +44,29 @@ const BuzzDetails = () => {
     fetchData();
   }, [dispatch, buzzId]);
 
+  useEffect(() => {
+    if (likedBuzz) {
+      setIsLikedByUser(true);
+    }
+  }, [likesArray.length, likedBuzz]);
+
+  const handleLike = async (e) => {
+    e.stopPropagation();
+    if (isLikedByUser) {
+      const unliked = fetch(`/api/likes/${likedBuzz.id}`, {
+        method: "DELETE",
+      });
+      setIsLikedByUser(false);
+      setLikeCounter((prev) => prev - 1);
+      setLikedBuzz(null);
+    } else {
+      const like = await dispatch(likeBuzz(buzz.id));
+      setIsLikedByUser(true);
+      setLikedBuzz(like);
+      setLikeCounter((prev) => prev + 1);
+    }
+  };
+
   return (
     <div className="buzz-details-main-container">
       <div className="buzz-details-left-container">
@@ -47,13 +78,16 @@ const BuzzDetails = () => {
             <>
               <div className="buzz-content">
                 <div className="user-container">
-                  <Link to={`/users/${buzz?.user_id}`} className="user-profile-link">
-                  <img
-                    src={users[buzz?.user_id - 1]?.profile_pic}
-                    alt=""
-                    className="buzz-pfp"
-                  />
-                  {`@${users[buzz?.user_id - 1]?.username}`}
+                  <Link
+                    to={`/users/${buzz?.user_id}`}
+                    className="user-profile-link"
+                  >
+                    <img
+                      src={users[buzz?.user_id - 1]?.profile_pic}
+                      alt=""
+                      className="buzz-pfp"
+                    />
+                    {`@${users[buzz?.user_id - 1]?.username}`}
                   </Link>
                 </div>
                 <div>{buzz?.content}</div>
@@ -76,6 +110,20 @@ const BuzzDetails = () => {
                   {showDropdown && <DeleteBuzzModal buzz={buzz} />}
                 </div>
               </div>
+              <div onClick={handleLike} className={`heart-info-container`}>
+                <div className="heart-icon-container">
+                  <img
+                    className={`tweet icon heart ${
+                      likedBuzz ? "liked" : "not-liked"
+                    }`}
+                    src={likedBuzz ? solidHeart : hollowHeart}
+                    alt="heart-icon"
+                  />
+                </div>
+                <div className="comment-counter">
+                  <span>{likeCounter}</span>
+                </div>
+              </div>
             </>
           ) : (
             <>
@@ -90,6 +138,20 @@ const BuzzDetails = () => {
                 </div>
                 <div>{buzz?.content}</div>
                 <img src={buzz?.image_url} className="single-buzz-img" alt="" />
+              </div>
+              <div onClick={handleLike} className={`heart-info-container`}>
+                <div className="heart-icon-container">
+                  <img
+                    className={`tweet icon heart ${
+                      likedBuzz ? "liked" : "not-liked"
+                    }`}
+                    src={likedBuzz ? solidHeart : hollowHeart}
+                    alt="heart-icon"
+                  />
+                </div>
+                <div className="comment-counter">
+                  <span>{likeCounter}</span>
+                </div>
               </div>
             </>
           )}

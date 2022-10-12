@@ -13,6 +13,9 @@ const Buzzes = () => {
   const [users, setUsers] = useState([]);
   const [editActive, setEditActive] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  // const [isLikedByUser, setIsLikedByUser] = useState(false)
+  // const [likeCounter, setLikeCounter] = useState(buzz.likes.length)
+
 
   useEffect(() => {
     dispatch(getBuzzes()); // dispatch getBuzzes thunk which calls getBuzzes action
