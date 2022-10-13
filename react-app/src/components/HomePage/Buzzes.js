@@ -16,7 +16,6 @@ const Buzzes = () => {
   const [editActive, setEditActive] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
 
-
   useEffect(() => {
     dispatch(getBuzzes()); // dispatch getBuzzes thunk which calls getBuzzes action
 
@@ -36,98 +35,151 @@ const Buzzes = () => {
 
   return (
     <div className="buzzes-container">
-      {buzzes.map((ele) => (
-        <div key={ele.id} className="single-buzz">
-          {user && user?.id == ele?.user_id ? (
-            <>
-              <div className="buzz-content">
-                <Link
-                  to={`/buzzes/${ele.id}`}
-                  key={ele.id}
-                  className="single_buzz"
-                >
-                  <div className="single-buzz-content-and-image">
-                    <div className="user-container">
-                      <Link
-                        to={`/users/${users[ele?.user_id - 1]?.id}`}
-                        key={users[ele?.user_id - 1]}
-                        className="single_buzz"
-                      >
+      {buzzes.map((ele) => {
+        let isLikedByUser = false;
+        let likeCounter = ele?.likes?.length;
+        let likesArray = ele?.likes;
+        let likedBuzz = likesArray.find((like) => like.user_id === user.id);
+        console.log({likedBuzz})
+
+        const handleLike = async (e) => {
+          e.stopPropagation();
+          if (isLikedByUser) {
+            const unliked = fetch(`/api/likes/${likedBuzz?.id}`, {
+              method: "DELETE",
+            });
+            isLikedByUser = false;
+            likeCounter = (prev) => prev - 1;
+            likedBuzz = null;
+          } else {
+            const like = await dispatch(likeBuzz(ele?.id));
+            isLikedByUser = true;
+            likedBuzz = like;
+            likeCounter = (prev) => prev + 1;
+          }
+        };
+
+        return (
+          <div key={ele.id + `${isLikedByUser}`} className="single-buzz">
+            {user && user?.id == ele?.user_id ? (
+              <>
+                <div className="buzz-content">
+                  <Link
+                    to={`/buzzes/${ele.id}`}
+                    key={ele.id}
+                    className="single_buzz"
+                  >
+                    <div className="single-buzz-content-and-image">
+                      <div className="user-container">
+                        <Link
+                          to={`/users/${users[ele?.user_id - 1]?.id}`}
+                          key={users[ele?.user_id - 1]}
+                          className="single_buzz"
+                        >
+                          <img
+                            src={users[ele?.user_id - 1]?.profile_pic}
+                            alt=""
+                            className="buzz-pfp"
+                          />
+                          {`@${users[ele?.user_id - 1]?.username}`}
+                        </Link>
+                      </div>
+                      <div className="buzz-content">{ele.content}</div>
+                      <div>
                         <img
-                          src={users[ele?.user_id - 1]?.profile_pic}
+                          src={ele.image_url}
+                          className="single-buzz-img"
                           alt=""
-                          className="buzz-pfp"
                         />
-                        {`@${users[ele?.user_id - 1]?.username}`}
-                      </Link>
+                      </div>
                     </div>
-                    <div className="buzz-content">{ele.content}</div>
-                    <div>
-                      <img
-                        src={ele.image_url}
-                        className="single-buzz-img"
-                        alt=""
-                      />
-                    </div>
+                  </Link>
+                </div>
+                <div className="buzz-options">
+                  <div
+                    className="Buzzes-name"
+                    onClick={() => {
+                      editBuzz();
+                      setEditActive(!editActive);
+                    }}
+                  >
+                    <button className="buzz-options-button">
+                      <i className="fa-solid fa-ellipsis fa-xl"></i>
+                    </button>
                   </div>
-                </Link>
-              </div>
-              <div className="buzz-options">
-                <div
-                  className="Buzzes-name"
-                  onClick={() => {
-                    editBuzz();
-                    setEditActive(!editActive);
-                  }}
-                >
-                  <button className="buzz-options-button">
-                    <i className="fa-solid fa-ellipsis fa-xl"></i>
-                  </button>
+                  <div className="options-buttons">
+                    {showDropdown && <EditBuzzModal buzz={ele} id={ele.id} />}
+                    {showDropdown && <DeleteBuzzModal buzz={ele} />}
+                  </div>
                 </div>
-                <div className="options-buttons">
-                  {showDropdown && <EditBuzzModal buzz={ele} id={ele.id} />}
-                  {showDropdown && <DeleteBuzzModal buzz={ele} />}
+                <div onClick={handleLike} className={`heart-info-container`}>
+                  <div className="heart-icon-container">
+                    <img
+                      className={`tweet icon heart ${
+                        likedBuzz ? "liked" : "not-liked"
+                      }`}
+                      src={likedBuzz ? solidHeart : hollowHeart}
+                      alt="heart-icon"
+                    />
+                  </div>
+                  <div className="comment-counter">
+                    <span>{likeCounter}</span>
+                  </div>
                 </div>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="buzz-content">
-                <Link
-                  to={`/buzzes/${ele.id}`}
-                  key={ele.id}
-                  className="single_buzz"
-                >
-                  <div className="single-buzz-content-and-image">
-                    <div className="user-container">
-                      <Link
-                        to={`/users/${users[ele?.user_id - 1]?.id}`}
-                        key={users[ele?.user_id - 1]}
-                        className="single_buzz"
-                      >
+              </>
+            ) : (
+              <>
+                <div className="buzz-content">
+                  <Link
+                    to={`/buzzes/${ele.id}`}
+                    key={ele.id}
+                    className="single_buzz"
+                  >
+                    <div className="single-buzz-content-and-image">
+                      <div className="user-container">
+                        <Link
+                          to={`/users/${users[ele?.user_id - 1]?.id}`}
+                          key={users[ele?.user_id - 1]}
+                          className="single_buzz"
+                        >
+                          <img
+                            src={users[ele?.user_id - 1]?.profile_pic}
+                            alt=""
+                            className="buzz-pfp"
+                          />
+                          {`@${users[ele?.user_id - 1]?.username}`}
+                        </Link>
+                      </div>
+                      <div className="buzz-content">{ele.content}</div>
+                      <div>
                         <img
-                          src={users[ele?.user_id - 1]?.profile_pic}
+                          src={ele.image_url}
+                          className="single-buzz-img"
                           alt=""
-                          className="buzz-pfp"
                         />
-                        {`@${users[ele?.user_id - 1]?.username}`}
-                      </Link>
+                      </div>
                     </div>
-                    <div className="buzz-content">{ele.content}</div>
-                    <div>
-                      <img
-                        src={ele.image_url}
-                        className="single-buzz-img"
-                        alt=""
-                      />
-                    </div>
+                  </Link>
+                </div>
+                <div onClick={handleLike} className={`heart-info-container`}>
+                  <div className="heart-icon-container">
+                    <img
+                      className={`tweet icon heart ${
+                        likedBuzz ? "liked" : "not-liked"
+                      }`}
+                      src={likedBuzz ? solidHeart : hollowHeart}
+                      alt="heart-icon"
+                    />
                   </div>
-                </Link>
-              </div>
-            </>
-          )}
-        </div>
-      ))}
+                  <div className="comment-counter">
+                    <span>{likeCounter}</span>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 };
