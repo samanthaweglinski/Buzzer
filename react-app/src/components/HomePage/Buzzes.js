@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getBuzzes } from "../../store/buzzes";
+import { getBuzzes, likeBuzz } from "../../store/buzzes";
 import "../CSS/Buzzes.css";
 import { Link, NavLink } from "react-router-dom";
 import EditBuzzModal from "./EditBuzzModal";
 import DeleteBuzzModal from "./DeleteBuzzModal";
+import solidHeart from "../../components/images/solid_heart.svg";
+import hollowHeart from "../../components/images/hollow_heart.svg";
 
 const Buzzes = () => {
   const dispatch = useDispatch();
@@ -13,8 +15,6 @@ const Buzzes = () => {
   const [users, setUsers] = useState([]);
   const [editActive, setEditActive] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
-  // const [isLikedByUser, setIsLikedByUser] = useState(false)
-  // const [likeCounter, setLikeCounter] = useState(buzz.likes.length)
 
 
   useEffect(() => {
