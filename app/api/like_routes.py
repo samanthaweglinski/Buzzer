@@ -14,9 +14,6 @@ def delete_like(id):
     like_dict = like.to_dict()
     current_user_id = current_user.get_id()
     like_dict_id = like_dict['user_id']
-    print(f'current_user_id:', current_user_id)
-    print(f'like_dict_id:', like_dict_id)
-    print(f'like.user_id:', like.user_id)
     if (like_dict['user_id'] == int(current_user.get_id())):
       db.session.delete(like)
       db.session.commit()
