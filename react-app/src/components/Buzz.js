@@ -6,9 +6,9 @@ import DeleteBuzzModal from "./HomePage/DeleteBuzzModal";
 import solidHeart from "../components/images/solid_heart.svg";
 import hollowHeart from "../components/images/hollow_heart.svg";
 import { Link, NavLink } from "react-router-dom";
-import "../components/CSS/Buzzes.css"
 
-const Buzz = ({ buzz }) => {
+
+const Buzz = ({ buzz, users }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.session.user);
   // const [isLikedByUser, setIsLikedByUser] = useState(buzz?.);
@@ -16,7 +16,7 @@ const Buzz = ({ buzz }) => {
   const [likesArray, setLikesArray] = useState(buzz?.likes);
   const [editActive, setEditActive] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
   const [likedBuzz, setLikedBuzz] = useState(
     likesArray.find((like) => like.user_id === user.id)
   );
@@ -27,15 +27,13 @@ const Buzz = ({ buzz }) => {
   };
 
   // useEffect(() => {
-  //   dispatch(getBuzzes(buzz.id)); // dispatch getBuzzes thunk which calls getBuzzes action
-
   //   async function fetchData() {
   //     const response = await fetch("/api/users/");
   //     const responseData = await response.json();
   //     setUsers(responseData.users);
   //   }
   //   fetchData();
-  // }, [dispatch, buzz]);
+  // }, [dispatch]);
 
   const handleLike = async (e) => {
     e.stopPropagation();
@@ -54,6 +52,8 @@ const Buzz = ({ buzz }) => {
     }
   };
 
+  // console.log({users})
+  // console.log(users[buzz?.user_id - 1]?.username)
 
   return (
     <>

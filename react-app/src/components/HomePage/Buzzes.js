@@ -37,7 +37,7 @@ const Buzzes = () => {
   return (
     <div className="buzzes-container">
       {buzzes.map(buzz => (
-        <Buzz buzz={buzz}/>
+        <Buzz buzz={buzz} users={users}/>
       ))}
       {/* {buzzes.map((ele) => {
         let isLikedByUser = false;
