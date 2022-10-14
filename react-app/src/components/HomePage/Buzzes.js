@@ -7,6 +7,7 @@ import EditBuzzModal from "./EditBuzzModal";
 import DeleteBuzzModal from "./DeleteBuzzModal";
 import solidHeart from "../../components/images/solid_heart.svg";
 import hollowHeart from "../../components/images/hollow_heart.svg";
+import Buzz from "../Buzz";
 
 const Buzzes = () => {
   const dispatch = useDispatch();
@@ -35,12 +36,15 @@ const Buzzes = () => {
 
   return (
     <div className="buzzes-container">
-      {buzzes.map((ele) => {
+      {buzzes.map(buzz => (
+        <Buzz buzz={buzz}/>
+      ))}
+      {/* {buzzes.map((ele) => {
         let isLikedByUser = false;
         let likeCounter = ele?.likes?.length;
         let likesArray = ele?.likes;
         let likedBuzz = likesArray.find((like) => like.user_id === user.id);
-        console.log({likedBuzz})
+        // console.log({ likedBuzz });
 
         const handleLike = async (e) => {
           e.stopPropagation();
@@ -60,7 +64,7 @@ const Buzzes = () => {
         };
 
         return (
-          <div key={ele.id + `${isLikedByUser}`} className="single-buzz">
+          <div key={ele.id} className="single-buzz">
             {user && user?.id == ele?.user_id ? (
               <>
                 <div className="buzz-content">
@@ -179,7 +183,7 @@ const Buzzes = () => {
             )}
           </div>
         );
-      })}
+      })} */}
     </div>
   );
 };
