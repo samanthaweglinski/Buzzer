@@ -24,7 +24,7 @@
   overflow-x: hidden;
   width: 100%;
   border-left: 0.5px solid white;
-  /* border-right: 0.5px solid white; */
+  border-right: 0.5px solid white;
 }
 
 .user-profile-right-container {
@@ -33,7 +33,8 @@
 }
 
 .user-profile-mid-container::-webkit-scrollbar {
-  width: 8px;
+  /* width: 8px; */
+  display: none;
 }
 
 .user-profile-mid-container::-webkit-scrollbar-track {
@@ -51,9 +52,17 @@
   align-items: center;
 }
 
+.user-username {
+  padding-left: 10px;
+  font-size: large;
+}
+
 .bio {
+  display: flex;
   color: white;
-  word-break: break-all
+  word-break: break-all;
+  padding: 2em 0em;
+  justify-content: center;
 }
 
 .user-profile-mid-top {
@@ -74,4 +83,10 @@
 .user-tweets {
   display: flex;
   flex-direction: column-reverse;
+}
+
+.user-profile-pfp {
+  height: 75px;
+  width: 75px;
+  border-radius: 50px;
 }

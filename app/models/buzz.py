@@ -12,6 +12,7 @@ class Buzz(db.Model, UserMixin):
 
     user = db.relationship('User', back_populates='buzzes')
     comments = db.relationship('Comment', back_populates='buzzes', cascade="all, delete-orphan")
+    likes = db.relationship('Like', back_populates='buzzes', cascade="all, delete-orphan")
 
     def to_dict(self):
         return {
@@ -19,4 +20,5 @@ class Buzz(db.Model, UserMixin):
             'content': self.content,
             'user_id': self.user_id,
             'image_url': self.image_url,
+            'likes': [like.to_dict() for like in self.likes],
         }

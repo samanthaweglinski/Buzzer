@@ -17,6 +17,7 @@
 .single-buzz-img {
   max-width: 250px;
   max-height: auto;
+  padding-top: 5px;
 }
 
 .single-buzz-content-and-image {
@@ -27,6 +28,7 @@
   height: 45px;
   width: 45px;
   border-radius: 50px;
+  padding-right: 5px;
 }
 
 .user-container {
@@ -35,12 +37,24 @@
   justify-content: flex-start;
   padding-bottom: 2em;
 }
- .buzz-content {
+
+.buzz-content {
   margin-bottom: 1em;
   word-break: break-all
- }
+}
 
- .single_buzz {
+.single_buzz {
   display: flex;
   align-items: center;
- }
+}
+
+.user-profile-link {
+  display: flex;
+  align-items: center;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 4em;
+}

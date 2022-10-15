@@ -22,12 +22,14 @@
 .buzz-details-mid-container {
   width: 100%;
   border-left: thin solid white;
+  border-right: thin solid white;
   word-break: break-all;
   overflow-y: scroll;
 }
 
 .buzz-details-mid-container::-webkit-scrollbar {
-  width: 8px;
+  /* width: 8px; */
+  display: none;
 }
 
 .buzz-details-mid-container::-webkit-scrollbar-track {
@@ -42,7 +44,7 @@
 
 .specific-buzz {
   display: flex;
-  border: 0.5px solid white;
+  /* border: 0.5px solid white; */
   border-top: none;
   border-width: thin;
   color: white;
@@ -94,4 +96,10 @@
   /* border-left: thin solid white; */
   /* width: 100%; */
   width: 50%;
+}
+
+.single-buzz-details {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }

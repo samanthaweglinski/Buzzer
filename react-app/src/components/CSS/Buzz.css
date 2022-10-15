@@ -1,0 +1,46 @@
+.single-buzz {
+  border: 0.5px solid gray;
+  border-width: thin;
+  color: white;
+  padding: 1em 2em;
+  word-break: break-all
+}
+
+.heart-info-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding-right: 10em;
+}
+
+.buzz.icon.heart {
+  width: 1.5em;
+  cursor: pointer;
+}
+
+.buzz.icon.comment {
+  width: 1.7em;
+}
+
+.user-and-options-container {
+  display: flex;
+  justify-content: space-between;
+  /* margin-bottom: -12px; */
+}
+
+.buzz-options-button {
+  background: none
+}
+
+.comment-icon-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.comment-and-like-container {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 2em;
+  padding-left: 10em;
+}

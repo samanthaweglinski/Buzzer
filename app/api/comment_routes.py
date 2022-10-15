@@ -4,7 +4,7 @@ from app.forms import comment_form
 from flask_login import current_user
 from .auth_routes import validation_errors_to_error_messages
 
-comment_routes = Blueprint("comments", __name__)
+comment_routes = Blueprint('comments', __name__)
 
 
 # edit comment

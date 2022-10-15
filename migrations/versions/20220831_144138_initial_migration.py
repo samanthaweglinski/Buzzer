@@ -46,6 +46,14 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('likes',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('buzz_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['buzz_id'], ['buzzes.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
     # ### end Alembic commands ###
 
 
@@ -54,4 +62,5 @@ def downgrade():
     op.drop_table('comments')
     op.drop_table('buzzes')
     op.drop_table('users')
+    op.drop_table('likes')
     # ### end Alembic commands ###
