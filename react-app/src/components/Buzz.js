@@ -84,8 +84,10 @@ const Buzz = ({ buzz, users }) => {
           </div>
           <div className="buzz-content">
             <div className="content-container">
-              <div>{buzz?.content}</div>
-              <img src={buzz?.image_url} className="single-buzz-img" alt="" />
+              <Link to={`/buzzes/${buzz?.id}`}>
+                <div className="single-buzz-content">{buzz?.content}</div>
+                <img src={buzz?.image_url} className="single-buzz-img" alt="" />
+              </Link>
             </div>
           </div>
           <div className={`heart-info-container`}>
@@ -129,8 +131,10 @@ const Buzz = ({ buzz, users }) => {
           </div>
           <div className="buzz-content">
             <div className="content-container">
-              <div>{buzz?.content}</div>
-              <img src={buzz?.image_url} className="single-buzz-img" alt="" />
+              <Link to={`/buzzes/${buzz?.id}`}>
+                <div className="single-buzz-content">{buzz?.content}</div>
+                <img src={buzz?.image_url} className="single-buzz-img" alt="" />
+              </Link>
             </div>
           </div>
           <div className={`heart-info-container`}>

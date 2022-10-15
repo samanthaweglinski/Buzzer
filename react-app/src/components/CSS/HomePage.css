@@ -58,7 +58,8 @@
 .homepage-mid-bottom {
   /* border: .5px solid gray; */
 }
- .home-text {
+
+.home-text {
   font-family: TwitterChirpExtendedHeavy, Verdana, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 18px;
   font-weight: bold;
@@ -68,17 +69,17 @@
   padding-bottom: 15px;
  }
 
- .create-form-container {
+.create-form-container {
   display: flex;
   flex-direction: row;
- }
+}
 
- .current-user-pfp {
+.current-user-pfp {
   padding-left: 15px;
- }
+}
 
- .create-buzz-user-pfp {
+.create-buzz-user-pfp {
   height: 50px;
   width: 50px;
   border-radius: 50px;
- }
+}
