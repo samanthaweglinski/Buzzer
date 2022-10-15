@@ -53,8 +53,8 @@ function User() {
       <div className="user-profile-mid-container">
         <div className="user-profile-mid-top">
           <div className="user-details">
-            <img src={user?.profile_pic} alt="" className="user-pfp" />
-            <div className="user-username">{user.username}</div>
+            <img src={user?.profile_pic} alt="" className="user-profile-pfp" />
+            <div className="user-username">@{user.username}</div>
           </div>
           <div className="bio">{user.bio}</div>
         </div>
