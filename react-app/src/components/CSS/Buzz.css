@@ -22,3 +22,7 @@
   display: flex;
   justify-content: space-between;
 }
+
+.buzz-options-button {
+  background: none
+}

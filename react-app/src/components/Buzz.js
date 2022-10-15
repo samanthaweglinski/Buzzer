@@ -5,18 +5,17 @@ import EditBuzzModal from "./HomePage/EditBuzzModal";
 import DeleteBuzzModal from "./HomePage/DeleteBuzzModal";
 import solidHeart from "../components/images/solid_heart.svg";
 import hollowHeart from "../components/images/hollow_heart.svg";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import "./CSS/Buzz.css";
 
 const Buzz = ({ buzz, users }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const user = useSelector((state) => state?.session.user);
-  // const [isLikedByUser, setIsLikedByUser] = useState(buzz?.);
   const [likeCounter, setLikeCounter] = useState(buzz?.likes?.length);
   const [likesArray, setLikesArray] = useState(buzz?.likes);
   const [editActive, setEditActive] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
-  // const [users, setUsers] = useState([]);
   const [likedBuzz, setLikedBuzz] = useState(
     likesArray.find((like) => like.user_id === user.id)
   );
@@ -40,6 +39,11 @@ const Buzz = ({ buzz, users }) => {
       setLikedBuzz(like);
       setLikeCounter((prev) => prev + 1);
     }
+  };
+
+  const goToPost = () => {
+    history.push(`/buzzes/${buzz.id}`);
+    // onClick()
   };
 
   return (
@@ -102,14 +106,26 @@ const Buzz = ({ buzz, users }) => {
       ) : (
         <div className="single-buzz">
           <div className="user-and-options-container">
-            <Link to={`/users/${buzz?.user_id}`} className="user-profile-link">
-              <img
-                src={users[buzz?.user_id - 1]?.profile_pic}
-                alt=""
-                className="buzz-pfp"
-              />
-              {`@${users[buzz?.user_id - 1]?.username}`}
-            </Link>
+            <div className="user-container">
+              <Link
+                to={`/users/${buzz?.user_id}`}
+                className="user-profile-link"
+              >
+                <img
+                  src={users[buzz?.user_id - 1]?.profile_pic}
+                  alt=""
+                  className="buzz-pfp"
+                />
+                {`@${users[buzz?.user_id - 1]?.username}`}
+              </Link>
+            </div>
+            <div className="buzz-options">
+              <button className="buzz-options-button">
+                <Link to={`/buzzes/${buzz?.id}`}>
+                  <i className="fa-solid fa-ellipsis fa-xl"></i>
+                </Link>
+              </button>
+            </div>
           </div>
           <div className="buzz-content">
             <div className="content-container">
