@@ -22,6 +22,7 @@
 .buzz-details-mid-container {
   width: 100%;
   border-left: thin solid white;
+  border-right: thin solid white;
   word-break: break-all;
   overflow-y: scroll;
 }
@@ -43,7 +44,7 @@
 
 .specific-buzz {
   display: flex;
-  border: 0.5px solid white;
+  /* border: 0.5px solid white; */
   border-top: none;
   border-width: thin;
   color: white;

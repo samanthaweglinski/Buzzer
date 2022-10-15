@@ -76,7 +76,7 @@ const BuzzForm = () => {
             <textarea
               name="content"
               type="text"
-              placeholder="What's on your mind?"
+              placeholder="What's happening?"
               value={content}
               onChange={updateContent}
             />
