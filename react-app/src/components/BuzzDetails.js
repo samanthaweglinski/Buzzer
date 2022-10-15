@@ -10,6 +10,7 @@ import Comments from "./HomePage/Comments";
 import { getComments } from "../store/comments";
 import solidHeart from "../components/images/solid_heart.svg";
 import hollowHeart from "../components/images/hollow_heart.svg";
+import commentIcon from "../components/images/comment_icon.svg";
 
 const BuzzDetails = () => {
   let { buzzId } = useParams();
@@ -77,8 +78,8 @@ const BuzzDetails = () => {
       <div className="buzz-details-mid-container">
         <div key={buzz?.id} className="specific-buzz">
           {user && user?.id == buzz?.user_id ? (
-            <>
-              <div className="buzz-content">
+            <div className="single-buzz-details">
+              <div className="user-and-options-container">
                 <div className="user-container">
                   <Link
                     to={`/users/${buzz?.user_id}`}
@@ -92,70 +93,130 @@ const BuzzDetails = () => {
                     {`@${users[buzz?.user_id - 1]?.username}`}
                   </Link>
                 </div>
-                <div>{buzz?.content}</div>
-                <img src={buzz?.image_url} className="single-buzz-img" alt="" />
-              </div>
-              <div className="buzz-options">
-                <div
-                  className="Buzzes-name"
-                  onClick={() => {
-                    editBuzz();
-                    setEditActive(!editActive);
-                  }}
-                >
-                  <button className="buzz-options-button">
-                    <i className="fa-solid fa-ellipsis fa-xl"></i>
-                  </button>
-                </div>
-                <div className="options-buttons">
-                  {showDropdown && <EditBuzzModal buzz={buzz} id={buzz.id} />}
-                  {showDropdown && <DeleteBuzzModal buzz={buzz} />}
+                <div className="buzz-options">
+                  <div
+                    className="Buzzes-name"
+                    onClick={() => {
+                      editBuzz();
+                      setEditActive(!editActive);
+                    }}
+                  >
+                    <button className="buzz-options-button">
+                      <i className="fa-solid fa-ellipsis fa-xl"></i>
+                    </button>
+                  </div>
+                  <div className="options-buttons">
+                    {showDropdown && <EditBuzzModal buzz={buzz} id={buzz.id} />}
+                    {showDropdown && <DeleteBuzzModal buzz={buzz} />}
+                  </div>
                 </div>
               </div>
-              <div onClick={handleLike} className={`heart-info-container`}>
-                <div className="heart-icon-container">
-                  <img
-                    className={`buzz icon heart ${
-                      likedBuzz ? "liked" : "not-liked"
-                    }`}
-                    src={likedBuzz ? solidHeart : hollowHeart}
-                    alt="heart-icon"
-                  />
-                </div>
-                <div className="comment-counter">
-                  <span>{likeCounter}</span>
-                </div>
-              </div>
-            </>
-          ) : (
-            <>
               <div className="buzz-content">
+                <div className="content-container">
+                  <Link to={`/buzzes/${buzz?.id}`}>
+                    <div className="single-buzz-content">{buzz?.content}</div>
+                    <img
+                      src={buzz?.image_url}
+                      className="single-buzz-img"
+                      alt=""
+                    />
+                  </Link>
+                </div>
+              </div>
+              <div className="comment-and-like-container">
+                <div className="comment-icon-container">
+                  <Link to={`/buzzes/${buzz?.id}`}>
+                    <img
+                      className="buzz icon comment"
+                      src={commentIcon}
+                      alt="comment-icon"
+                    />
+                    <div className="comment-counter">
+                      {/* <span>{0}</span> */}
+                    </div>
+                  </Link>
+                </div>
+                <div className={`heart-info-container`}>
+                  <div onClick={handleLike} className="heart-icon-container">
+                    <img
+                      className={`buzz icon heart ${
+                        likedBuzz ? "liked" : "not-liked"
+                      }`}
+                      src={likedBuzz ? solidHeart : hollowHeart}
+                      alt="heart-icon"
+                    />
+                  </div>
+                  <div className="like-counter">
+                    <span>{likeCounter}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="single-buzz-details">
+              <div className="user-and-options-container">
                 <div className="user-container">
-                  <img
-                    src={users[buzz?.user_id - 1]?.profile_pic}
-                    alt=""
-                    className="buzz-pfp"
-                  />
-                  {`@${users[buzz?.user_id - 1]?.username}`}
+                  <Link
+                    to={`/users/${buzz?.user_id}`}
+                    className="user-profile-link"
+                  >
+                    <img
+                      src={users[buzz?.user_id - 1]?.profile_pic}
+                      alt=""
+                      className="buzz-pfp"
+                    />
+                    {`@${users[buzz?.user_id - 1]?.username}`}
+                  </Link>
                 </div>
-                <div>{buzz?.content}</div>
-                <img src={buzz?.image_url} className="single-buzz-img" alt="" />
+                {/* <div className="buzz-options">
+                  <button className="buzz-options-button">
+                    <Link to={`/buzzes/${buzz?.id}`}>
+                      <i className="fa-solid fa-ellipsis fa-xl"></i>
+                    </Link>
+                  </button>
+                </div> */}
               </div>
-              <div onClick={handleLike} className={`heart-info-container`}>
-                <div className="heart-icon-container">
-                  <img
-                    className={`tweet icon heart ${
-                      likedBuzz ? "liked" : "not-liked"
-                    }`}
-                    src={likedBuzz ? solidHeart : hollowHeart}
-                    alt="heart-icon"
-                  />
-                </div>
-                <div className="comment-counter">
-                  <span>{likeCounter}</span>
+              <div className="buzz-content">
+                <div className="content-container">
+                  <Link to={`/buzzes/${buzz?.id}`}>
+                    <div className="single-buzz-content">{buzz?.content}</div>
+                    <img
+                      src={buzz?.image_url}
+                      className="single-buzz-img"
+                      alt=""
+                    />
+                  </Link>
                 </div>
               </div>
-            </>
+              <div className="comment-and-like-container">
+                <div className="comment-icon-container">
+                  <Link to={`/buzzes/${buzz?.id}`}>
+                    <img
+                      className="buzz icon comment"
+                      src={commentIcon}
+                      alt="comment-icon"
+                    />
+                    <div className="comment-counter">
+                      {/* <span>{0}</span> */}
+                    </div>
+                  </Link>
+                </div>
+                <div className={`heart-info-container`}>
+                  <div onClick={handleLike} className="heart-icon-container">
+                    <img
+                      className={`buzz icon heart ${
+                        likedBuzz ? "liked" : "not-liked"
+                      }`}
+                      src={likedBuzz ? solidHeart : hollowHeart}
+                      alt="heart-icon"
+                    />
+                  </div>
+                  <div className="like-counter">
+                    <span>{likeCounter}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           )}
         </div>
         <div className="comments-for-single-buzz">
