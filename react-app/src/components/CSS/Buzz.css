@@ -9,13 +9,17 @@
 .heart-info-container {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
+  align-items: flex-end;
   padding-right: 10em;
 }
 
-.tweet.icon {
-  width: 2em;
+.buzz.icon.heart {
+  width: 1.5em;
   cursor: pointer;
+}
+
+.buzz.icon.comment {
+  width: 1.7em;
 }
 
 .user-and-options-container {
@@ -26,4 +30,17 @@
 
 .buzz-options-button {
   background: none
+}
+
+.comment-icon-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.comment-and-like-container {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 2em;
+  padding-left: 10em;
 }

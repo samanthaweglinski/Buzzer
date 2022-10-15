@@ -17,6 +17,7 @@
 .single-buzz-img {
   max-width: 250px;
   max-height: auto;
+  padding-top: 5px;
 }
 
 .single-buzz-content-and-image {

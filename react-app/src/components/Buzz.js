@@ -5,6 +5,7 @@ import EditBuzzModal from "./HomePage/EditBuzzModal";
 import DeleteBuzzModal from "./HomePage/DeleteBuzzModal";
 import solidHeart from "../components/images/solid_heart.svg";
 import hollowHeart from "../components/images/hollow_heart.svg";
+import commentIcon from "../components/images/comment_icon.svg";
 import { Link, NavLink, useHistory } from "react-router-dom";
 import "./CSS/Buzz.css";
 
@@ -90,18 +91,30 @@ const Buzz = ({ buzz, users }) => {
               </Link>
             </div>
           </div>
-          <div className={`heart-info-container`}>
-            <div onClick={handleLike} className="heart-icon-container">
+          <div className="comment-and-like-container">
+            <div className="comment-icon-container">
               <img
-                className={`tweet icon heart ${
-                  likedBuzz ? "liked" : "not-liked"
-                }`}
-                src={likedBuzz ? solidHeart : hollowHeart}
-                alt="heart-icon"
+                className="buzz icon comment"
+                src={commentIcon}
+                alt="comment-icon"
               />
+              <div className="comment-counter">
+                <span>{buzz?.id}</span>
+              </div>
             </div>
-            <div className="comment-counter">
-              <span>{likeCounter}</span>
+            <div className={`heart-info-container`}>
+              <div onClick={handleLike} className="heart-icon-container">
+                <img
+                  className={`buzz icon heart ${
+                    likedBuzz ? "liked" : "not-liked"
+                  }`}
+                  src={likedBuzz ? solidHeart : hollowHeart}
+                  alt="heart-icon"
+                />
+              </div>
+              <div className="like-counter">
+                <span>{likeCounter}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -137,18 +150,30 @@ const Buzz = ({ buzz, users }) => {
               </Link>
             </div>
           </div>
-          <div className={`heart-info-container`}>
-            <div onClick={handleLike} className="heart-icon-container">
+          <div className="comment-and-like-container">
+            <div className="comment-icon-container">
               <img
-                className={`tweet icon heart ${
-                  likedBuzz ? "liked" : "not-liked"
-                }`}
-                src={likedBuzz ? solidHeart : hollowHeart}
-                alt="heart-icon"
+                className="buzz icon comment"
+                src={commentIcon}
+                alt="comment-icon"
               />
+              <div className="comment-counter">
+                <span>{buzz?.id}</span>
+              </div>
             </div>
-            <div className="comment-counter">
-              <span>{likeCounter}</span>
+            <div className={`heart-info-container`}>
+              <div onClick={handleLike} className="heart-icon-container">
+                <img
+                  className={`buzz icon heart ${
+                    likedBuzz ? "liked" : "not-liked"
+                  }`}
+                  src={likedBuzz ? solidHeart : hollowHeart}
+                  alt="heart-icon"
+                />
+              </div>
+              <div className="like-counter">
+                <span>{likeCounter}</span>
+              </div>
             </div>
           </div>
         </div>

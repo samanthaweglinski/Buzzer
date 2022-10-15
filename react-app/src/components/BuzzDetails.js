@@ -115,7 +115,7 @@ const BuzzDetails = () => {
               <div onClick={handleLike} className={`heart-info-container`}>
                 <div className="heart-icon-container">
                   <img
-                    className={`tweet icon heart ${
+                    className={`buzz icon heart ${
                       likedBuzz ? "liked" : "not-liked"
                     }`}
                     src={likedBuzz ? solidHeart : hollowHeart}
