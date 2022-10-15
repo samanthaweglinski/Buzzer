@@ -5,3 +5,19 @@
   padding: 1em 2em;
   word-break: break-all
 }
+
+.heart-info-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.tweet.icon {
+  width: 2em;
+  cursor: pointer;
+}
+
+.user-and-options-container {
+  display: flex;
+  justify-content: space-between;
+}

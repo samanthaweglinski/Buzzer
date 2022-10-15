@@ -6,7 +6,7 @@ import DeleteBuzzModal from "./HomePage/DeleteBuzzModal";
 import solidHeart from "../components/images/solid_heart.svg";
 import hollowHeart from "../components/images/hollow_heart.svg";
 import { Link, NavLink } from "react-router-dom";
-import "./CSS/Buzz.css"
+import "./CSS/Buzz.css";
 
 const Buzz = ({ buzz, users }) => {
   const dispatch = useDispatch();
@@ -46,7 +46,7 @@ const Buzz = ({ buzz, users }) => {
     <>
       {user && user?.id == buzz?.user_id ? (
         <div className="single-buzz">
-          <div className="buzz-content">
+          <div className="user-and-options-container">
             <div className="user-container">
               <Link
                 to={`/users/${buzz?.user_id}`}
@@ -60,30 +60,32 @@ const Buzz = ({ buzz, users }) => {
                 {`@${users[buzz?.user_id - 1]?.username}`}
               </Link>
             </div>
+            <div className="buzz-options">
+              <div
+                className="Buzzes-name"
+                onClick={() => {
+                  editBuzz();
+                  setEditActive(!editActive);
+                }}
+              >
+                <button className="buzz-options-button">
+                  <i className="fa-solid fa-ellipsis fa-xl"></i>
+                </button>
+              </div>
+              <div className="options-buttons">
+                {showDropdown && <EditBuzzModal buzz={buzz} id={buzz.id} />}
+                {showDropdown && <DeleteBuzzModal buzz={buzz} />}
+              </div>
+            </div>
+          </div>
+          <div className="buzz-content">
             <div className="content-container">
               <div>{buzz?.content}</div>
               <img src={buzz?.image_url} className="single-buzz-img" alt="" />
             </div>
           </div>
-          <div className="buzz-options">
-            <div
-              className="Buzzes-name"
-              onClick={() => {
-                editBuzz();
-                setEditActive(!editActive);
-              }}
-            >
-              <button className="buzz-options-button">
-                <i className="fa-solid fa-ellipsis fa-xl"></i>
-              </button>
-            </div>
-            <div className="options-buttons">
-              {showDropdown && <EditBuzzModal buzz={buzz} id={buzz.id} />}
-              {showDropdown && <DeleteBuzzModal buzz={buzz} />}
-            </div>
-          </div>
-          <div onClick={handleLike} className={`heart-info-container`}>
-            <div className="heart-icon-container">
+          <div className={`heart-info-container`}>
+            <div onClick={handleLike} className="heart-icon-container">
               <img
                 className={`tweet icon heart ${
                   likedBuzz ? "liked" : "not-liked"
@@ -99,25 +101,24 @@ const Buzz = ({ buzz, users }) => {
         </div>
       ) : (
         <div className="single-buzz">
-          <div className="buzz-content">
-            <div className="user-container">
-              <Link
-                to={`/users/${buzz?.user_id}`}
-                className="user-profile-link"
-              >
-                <img
-                  src={users[buzz?.user_id - 1]?.profile_pic}
-                  alt=""
-                  className="buzz-pfp"
-                />
-                {`@${users[buzz?.user_id - 1]?.username}`}
-              </Link>
-            </div>
-            <div>{buzz?.content}</div>
-            <img src={buzz?.image_url} className="single-buzz-img" alt="" />
+          <div className="user-and-options-container">
+            <Link to={`/users/${buzz?.user_id}`} className="user-profile-link">
+              <img
+                src={users[buzz?.user_id - 1]?.profile_pic}
+                alt=""
+                className="buzz-pfp"
+              />
+              {`@${users[buzz?.user_id - 1]?.username}`}
+            </Link>
           </div>
-          <div onClick={handleLike} className={`heart-info-container`}>
-            <div className="heart-icon-container">
+          <div className="buzz-content">
+            <div className="content-container">
+              <div>{buzz?.content}</div>
+              <img src={buzz?.image_url} className="single-buzz-img" alt="" />
+            </div>
+          </div>
+          <div className={`heart-info-container`}>
+            <div onClick={handleLike} className="heart-icon-container">
               <img
                 className={`tweet icon heart ${
                   likedBuzz ? "liked" : "not-liked"
