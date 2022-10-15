@@ -13,6 +13,7 @@ const Buzz = ({ buzz, users }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state?.session.user);
+  // const comments = useSelector((state) => state?.comments);
   const [likeCounter, setLikeCounter] = useState(buzz?.likes?.length);
   const [likesArray, setLikesArray] = useState(buzz?.likes);
   const [editActive, setEditActive] = useState(false);
@@ -20,6 +21,8 @@ const Buzz = ({ buzz, users }) => {
   const [likedBuzz, setLikedBuzz] = useState(
     likesArray.find((like) => like.user_id === user.id)
   );
+
+  // console.log({ comments });
 
   const editBuzz = () => {
     setShowDropdown(!showDropdown);
@@ -93,14 +96,16 @@ const Buzz = ({ buzz, users }) => {
           </div>
           <div className="comment-and-like-container">
             <div className="comment-icon-container">
-              <img
-                className="buzz icon comment"
-                src={commentIcon}
-                alt="comment-icon"
-              />
-              <div className="comment-counter">
-                <span>{buzz?.id}</span>
-              </div>
+              <Link to={`/buzzes/${buzz?.id}`}>
+                <img
+                  className="buzz icon comment"
+                  src={commentIcon}
+                  alt="comment-icon"
+                />
+                <div className="comment-counter">
+                  {/* <span>{0}</span> */}
+                </div>
+              </Link>
             </div>
             <div className={`heart-info-container`}>
               <div onClick={handleLike} className="heart-icon-container">
@@ -152,14 +157,16 @@ const Buzz = ({ buzz, users }) => {
           </div>
           <div className="comment-and-like-container">
             <div className="comment-icon-container">
-              <img
-                className="buzz icon comment"
-                src={commentIcon}
-                alt="comment-icon"
-              />
-              <div className="comment-counter">
-                <span>{buzz?.id}</span>
-              </div>
+              <Link to={`/buzzes/${buzz?.id}`}>
+                <img
+                  className="buzz icon comment"
+                  src={commentIcon}
+                  alt="comment-icon"
+                />
+                <div className="comment-counter">
+                  {/* <span>{0}</span> */}
+                </div>
+              </Link>
             </div>
             <div className={`heart-info-container`}>
               <div onClick={handleLike} className="heart-icon-container">
