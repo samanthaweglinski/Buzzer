@@ -6,6 +6,7 @@ import DeleteBuzzModal from "./HomePage/DeleteBuzzModal";
 import solidHeart from "../components/images/solid_heart.svg";
 import hollowHeart from "../components/images/hollow_heart.svg";
 import { Link, NavLink } from "react-router-dom";
+import "./CSS/Buzz.css"
 
 const Buzz = ({ buzz, users }) => {
   const dispatch = useDispatch();
@@ -24,15 +25,6 @@ const Buzz = ({ buzz, users }) => {
     setShowDropdown(!showDropdown);
   };
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const response = await fetch("/api/users/");
-  //     const responseData = await response.json();
-  //     setUsers(responseData.users);
-  //   }
-  //   fetchData();
-  // }, [dispatch]);
-
   const handleLike = async (e) => {
     e.stopPropagation();
     if (likedBuzz) {
@@ -50,13 +42,10 @@ const Buzz = ({ buzz, users }) => {
     }
   };
 
-  // console.log({users})
-  // console.log(buzz?.user_id)
-
   return (
     <>
       {user && user?.id == buzz?.user_id ? (
-        <>
+        <div className="single-buzz">
           <div className="buzz-content">
             <div className="user-container">
               <Link
@@ -107,9 +96,9 @@ const Buzz = ({ buzz, users }) => {
               <span>{likeCounter}</span>
             </div>
           </div>
-        </>
+        </div>
       ) : (
-        <>
+        <div className="single-buzz">
           <div className="buzz-content">
             <div className="user-container">
               <Link
@@ -141,7 +130,7 @@ const Buzz = ({ buzz, users }) => {
               <span>{likeCounter}</span>
             </div>
           </div>
-        </>
+        </div>
       )}
     </>
   );

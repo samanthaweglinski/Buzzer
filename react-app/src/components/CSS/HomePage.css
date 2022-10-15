@@ -31,7 +31,8 @@
 }
 
 .homepage-mid-container::-webkit-scrollbar {
-  width: 8px;
+  /* width: 8px; */
+  display: none;
 }
 
 .homepage-mid-container::-webkit-scrollbar-track {

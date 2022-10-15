@@ -27,7 +27,8 @@
 }
 
 .buzz-details-mid-container::-webkit-scrollbar {
-  width: 8px;
+  /* width: 8px; */
+  display: none;
 }
 
 .buzz-details-mid-container::-webkit-scrollbar-track {

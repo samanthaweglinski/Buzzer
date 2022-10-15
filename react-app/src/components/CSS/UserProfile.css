@@ -33,7 +33,8 @@
 }
 
 .user-profile-mid-container::-webkit-scrollbar {
-  width: 8px;
+  /* width: 8px; */
+  display: none;
 }
 
 .user-profile-mid-container::-webkit-scrollbar-track {

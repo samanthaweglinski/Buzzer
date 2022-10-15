@@ -1,0 +1,7 @@
+.single-buzz {
+  border: 0.5px solid gray;
+  border-width: thin;
+  color: white;
+  padding: 1em 2em;
+  word-break: break-all
+}
